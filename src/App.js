@@ -1,25 +1,23 @@
-import logo from './logo.svg';
 import './App.css';
+import {Button} from "@material-ui/core";
+/* TODO: Rename everything from App --> Home ASAP */
 
-function App() {
+function Home() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
+    <div className="Home">
+      <header className="home-header">
+        <h1>Winter Storm Communication Service</h1>
         <p>
-          Edit <code>src/App.js</code> and save to reload.
+          Welcome to the Winter Storm Communication Service
+          Sign in or create an account to access the website
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
       </header>
+        <body>
+            <Button>Sign in</Button>
+            <Button>Create an account</Button>
+        </body>
     </div>
   );
 }
 
-export default App;
+export default Home;

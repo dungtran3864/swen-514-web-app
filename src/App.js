@@ -1,23 +1,49 @@
-import './App.css';
-import {Button} from "@material-ui/core";
-/* TODO: Rename everything from App --> Home ASAP */
+import './css/Home.css';
+import SignIn from "./SignIn";
+import {Button, styled, Input} from "@material-ui/core";
+import React from 'react';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link
+} from "react-router-dom";
 
-function Home() {
-  return (
-    <div className="Home">
-      <header className="home-header">
-        <h1>Winter Storm Communication Service</h1>
-        <p>
-          Welcome to the Winter Storm Communication Service
-          Sign in or create an account to access the website
-        </p>
-      </header>
-        <body>
-            <Button>Sign in</Button>
-            <Button>Create an account</Button>
-        </body>
-    </div>
-  );
+const StyledHome = styled`
+  background-color: black;
+  font-size: 32px;
+  color: white;
+`;
+
+const Home = () => {
+    return(
+        <Router>
+            <div>
+                <nav>
+                    <ul>
+                        <li>
+                            <Link to={"/sign-in"}>Sign In</Link>
+                        </li>
+                        <li>
+                            <Link to={"/create-account"}>Create An Account</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+            <div>
+                <h1>Winter Storm Communication Service</h1>
+                <p>
+                    Welcome to the Winter Storm Communication Service
+                    Sign in or create an account to access the website
+                </p>
+
+                <Button onclick={SignIn()} id={"sign-in"}>Sign in</Button>
+                <Input type={"submit"} onClick={SignIn()}>Sign In</Input>
+                <Button>Create an account</Button>
+            </div>
+        </Router>
+    );
+
 }
 
 export default Home;

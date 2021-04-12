@@ -1,5 +1,6 @@
 import './css/Home.css';
 import {Input, InputLabel} from "@material-ui/core";
+import Button from "./Button"
 /* TODO: Rename everything from App --> Home ASAP */
 
 /* TODO:
@@ -20,8 +21,9 @@ const SignIn = () =>  {
                     <Input type="text" id="email" name="email"/><br/>
                     <InputLabel htmlFor="password">Password:</InputLabel><br/>
                     <Input type="text" id="password" name="password"/><br/><br/>
-                    <Input type="submit" value="Submit"/><br/><br/>
-                    <Input type="submit" value="Create an account"/><br/>
+                    <Button to={"/citizen-home"} label={"Submit"}/><br/><br/>
+                    <label> -OR- </label><br/><br/>
+                    <Button to={"/create-account"} label={"Create Account"}/><br/>
                 </form>
             </body>
         </div>

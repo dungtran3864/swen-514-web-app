@@ -1,6 +1,4 @@
 import './css/Home.css';
-import SignIn from "./SignIn";
-import {Input} from "@material-ui/core";
 import Button from "./Button";
 import { CenteredColumn } from "./StyleBlocks";
 import styled from "styled-components";
@@ -33,6 +31,7 @@ const Landing = () => {
                 </div>
                 <div>
                     <Button to={"/sign-in"} label="Sign In"/>
+                    <label> -OR- </label>
                     <Button to={"/create-account"} label="Create An Account"/>
                 </div>
             </StyledHome>

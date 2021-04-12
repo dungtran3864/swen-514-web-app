@@ -1,5 +1,5 @@
-import './App.css';
-import {Button, Input, InputLabel} from "@material-ui/core";
+import './css/Home.css';
+import {Input, InputLabel} from "@material-ui/core";
 /* TODO: Rename everything from App --> Home ASAP */
 
 /* TODO:
@@ -8,7 +8,7 @@ import {Button, Input, InputLabel} from "@material-ui/core";
 *       -- the css in general needs work imo
 *   -- Do we want to enclose the form in a box of some kind?
 *  */
-function SignIn() {
+const SignIn = () =>  {
     return (
         <div className="SignIn">
             <header className="sign-in-header">

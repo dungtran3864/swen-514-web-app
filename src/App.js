@@ -15,9 +15,16 @@ const StyledHome = styled`
   color: white;
 `;
 
-const Home = () => {
+const App = () => {
     return(
         <Router>
+            <div>
+                <h1>Winter Storm Communication Service</h1>
+                <p>
+                    Welcome to the Winter Storm Communication Service
+                    Sign in or create an account to access the website
+                </p>
+            </div>
             <div>
                 <nav>
                     <ul>
@@ -31,12 +38,6 @@ const Home = () => {
                 </nav>
             </div>
             <div>
-                <h1>Winter Storm Communication Service</h1>
-                <p>
-                    Welcome to the Winter Storm Communication Service
-                    Sign in or create an account to access the website
-                </p>
-
                 <Button onclick={SignIn()} id={"sign-in"}>Sign in</Button>
                 <Input type={"submit"} onClick={SignIn()}>Sign In</Input>
                 <Button>Create an account</Button>
@@ -46,4 +47,4 @@ const Home = () => {
 
 }
 
-export default Home;
+export default App;

@@ -1,8 +1,10 @@
 import './css/Home.css';
 import SignIn from "./SignIn";
-import {Button, styled, Input} from "@material-ui/core";
+import {Button, Input} from "@material-ui/core";
 import { CenteredColumn } from "./StyleBlocks";
 import styled from "styled-components";
+//todo: why is the styled purple??
+import Styles from "./Styles";
 import React from 'react';
 import {
     BrowserRouter as Router,
@@ -12,9 +14,16 @@ import {
 } from "react-router-dom";
 
 const StyledHome = styled(CenteredColumn)`
-  background-color: #D5DDBC;
-  font-size: 32px;
-  color: black;
+  padding: 0 64px;
+  
+  #header{
+    background-color: #D5DDBC;
+    h1{
+      ${Styles.header}
+      font-style: italic;
+    }
+  }
+  
 `;
 
 
@@ -23,7 +32,7 @@ const App = () => {
     return(
         <Router>
             <StyledHome>
-                <div>
+                <div id={"header"}>
                     <h1>Winter Storm Communication Service</h1>
                     <p>
                         Welcome to the Winter Storm Communication Service

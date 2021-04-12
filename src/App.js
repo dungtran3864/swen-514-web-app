@@ -1,6 +1,8 @@
 import './css/Home.css';
 import SignIn from "./SignIn";
 import {Button, styled, Input} from "@material-ui/core";
+import { CenteredColumn } from "./StyleBlocks";
+import styled from "styled-components";
 import React from 'react';
 import {
     BrowserRouter as Router,
@@ -9,22 +11,26 @@ import {
     Link
 } from "react-router-dom";
 
-const StyledHome = styled`
-  background-color: black;
+const StyledHome = styled(CenteredColumn)`
+  background-color: #D5DDBC;
   font-size: 32px;
-  color: white;
+  color: black;
 `;
+
+
 
 const App = () => {
     return(
         <Router>
-            <div>
-                <h1>Winter Storm Communication Service</h1>
-                <p>
-                    Welcome to the Winter Storm Communication Service
-                    Sign in or create an account to access the website
-                </p>
-            </div>
+            <StyledHome>
+                <div>
+                    <h1>Winter Storm Communication Service</h1>
+                    <p>
+                        Welcome to the Winter Storm Communication Service
+                        Sign in or create an account to access the website
+                    </p>
+                </div>
+            </StyledHome>
             <div>
                 <nav>
                     <ul>

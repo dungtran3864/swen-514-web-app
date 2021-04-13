@@ -2,6 +2,7 @@ import './css/Home.css';
 import SignIn from "./SignIn";
 import Landing from "./Landing";
 import CreateAccount from "./CreateAccount";
+import CitizenHome from "./CitizenHome";
 import React from 'react';
 import {
     BrowserRouter as Router,
@@ -15,6 +16,9 @@ const App = () => {
     return(
         <Router>
             <Switch>
+                <Route path="/citizen-home">
+                    <CitizenHome />
+                </Route>
                 <Route path="/sign-in">
                     <SignIn />
                 </Route>

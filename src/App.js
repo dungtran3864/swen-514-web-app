@@ -10,12 +10,15 @@ import {
     Route,
     Link
 } from "react-router-dom";
-
+import CitizenReport from "./CitizenReport";
 
 const App = () => {
     return(
         <Router>
             <Switch>
+                <Route path="/submit-report">
+                    <CitizenReport />
+                </Route>
                 <Route path="/citizen-home">
                     <CitizenHome />
                 </Route>

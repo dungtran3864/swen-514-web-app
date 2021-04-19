@@ -14,10 +14,13 @@ const SignIn = () =>  {
                     <InputLabel htmlFor="email">Email:</InputLabel><br/>
                     <Input type="text" id="email" name="email"/><br/>
                     <InputLabel htmlFor="password">Password:</InputLabel><br/>
-                    <Input type="text" id="password" name="password"/><br/><br/>
+                    <Input type="password" id="password" name="password"/><br/><br/>
                     <Button to={"/citizen-home"} label={"Submit"}/><br/><br/>
                     <label> -OR- </label><br/><br/>
-                    <Button to={"/create-account"} label={"Create Account"}/><br/>
+                    <Button to={"/create-account"} label={"Create Account"}/><br/><br/>
+
+                    <label>================================</label><br/><br/>
+                    <Button to={"/"} label={"Back"}/>
                 </form>
             </body>
         </div>

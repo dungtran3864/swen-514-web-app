@@ -40,21 +40,18 @@ const Landing = () => {
                         WSCS
                     </title>
                 </head>
-                <body>
-                    <div id={"header"}>
-                        <h1>Winter Storm Communication Service</h1>
-                        <p>
-                            Welcome to the Winter Storm Communication Service
-                            Sign in or create an account to access the website
-                        </p>
-                    </div>
-                    <div id={"buttons"}>
-                        <Button to={"/sign-in"} label="Sign In"/>
-                        <br/>
-                        <br/>
-                        <Button to={"/create-account"} label="Create An Account"/>
-                    </div>
-                </body>
+                <div id={"header"}>
+                    <h1>Winter Storm Communication Service</h1>
+                    <p>
+                        Welcome to the Winter Storm Communication Service
+                        Sign in or create an account to access the website
+                    </p>
+                </div>
+                <div>
+                    <Button to={"/sign-in"} label="Sign In"/>
+                    <label> -OR- </label>
+                    <Button to={"/create-account"} label="Create An Account"/>
+                </div>
             </StyledHome>
     );
 }

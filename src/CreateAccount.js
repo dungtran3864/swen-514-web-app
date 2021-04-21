@@ -11,13 +11,12 @@ class CreateAccount extends Component{
         this.state = {
             email: "",
             password: "",
-            addressLine1: "",
-            addressLine2: "",
-            zipcode: "",
+            address: "",
+            address_l2: "",
+            zipCode: "",
             city: "",
-            State: ""
+            state: ""
         }
-
     }
 
     render(){
@@ -36,14 +35,14 @@ class CreateAccount extends Component{
                 <InputLabel htmlFor="password">Password:</InputLabel>
                 <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/><br/>
 
-                {this.state.addressLine1Empty && <label className="error-msg">Address field is empty</label>}
+                {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
                 <InputLabel htmlFor="address">Address:</InputLabel>
                 <Input type="text" id="adrL1" name="addressLine1" onChange={evt => this.updateAddressLine1(evt)}/><br/><br/>
 
                 <InputLabel htmlFor="address">Address L2 (optional):</InputLabel>
                 <Input type="text" id="adrl2" name="addressLine2" onChange={evt => this.updateAddressLine2(evt)}/><br/><br/>
 
-                {this.state.zipcodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
+                {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
                 <InputLabel htmlFor="zipCode">Zip Code:</InputLabel>
                 <Input type="text" id="zipCode" name="zipCode" onChange={evt => this.updateZipcode(evt)}/><br/><br/>
 
@@ -75,15 +74,15 @@ class CreateAccount extends Component{
     }
 
     updateAddressLine1(evt) {
-        this.setState({addressLine1: evt.target.value});
+        this.setState({address: evt.target.value});
     }
 
     updateAddressLine2(evt) {
-        this.setState({addressLine2: evt.target.value});
+        this.setState({address_l2: evt.target.value});
     }
 
     updateZipcode(evt) {
-        this.setState({zipcode: evt.target.value});
+        this.setState({zipCode: evt.target.value});
     }
 
     updateCity(evt) {
@@ -91,7 +90,7 @@ class CreateAccount extends Component{
     }
 
     updateState(evt) {
-        this.setState({State: evt.target.value});
+        this.setState({state: evt.target.value});
     }
 
     createAccount(){
@@ -104,19 +103,19 @@ class CreateAccount extends Component{
             this.setState({passwordEmpty: true});
         } else this.setState({passwordEmpty: false});
 
-        if(this.state.addressLine1.length === 0){
-            this.setState({addressLine1Empty: true});
-        } else this.setState({addressLine1Empty: false});
+        if(this.state.address.length === 0){
+            this.setState({addressEmpty: true});
+        } else this.setState({addressEmpty: false});
 
-        if(this.state.zipcode.length === 0){
-            this.setState({zipcodeEmpty: true});
-        } else this.setState({zipcodeEmpty: false});
+        if(this.state.zipCode.length === 0){
+            this.setState({zipCodeEmpty: true});
+        } else this.setState({zipCodeEmpty: false});
 
         if(this.state.city.length === 0){
             this.setState({cityEmpty: true});
         } else this.setState({cityEmpty: false});
 
-        if(this.state.State.length === 0){
+        if(this.state.state.length === 0){
             this.setState({stateEmpty: true});
         } else this.setState({stateEmpty: false});
 

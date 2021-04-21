@@ -9,13 +9,16 @@ class CitizenReport extends Component {
         super(props);
         console.log(this.props)
         this.state = {
-            addressLine1: "",
-            addressLine2: "",
-            zipcode: "",
+            email: "",
+            password: "",
+            address: "",
+            address_l2: "",
+            zipCode: "",
             city: "",
-            State: "",
+            state: "",
             facility: "",
-            details: ""
+            details: "",
+            citizen_id:""
         }
     }
 
@@ -32,14 +35,14 @@ class CitizenReport extends Component {
 
                     <label>Other Location:</label><br/>
 
-                    {this.state.addressLine1Empty && <label className="error-msg">Address field is empty</label>}
+                    {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
                     <InputLabel className="addressLine1-input-label">Address:</InputLabel>
                     <input id="adr1" disabled={true} type="text" className="addressLine1-input" onChange={evt => this.newAddressLine1(evt)}/><br/><br/>
 
                     <InputLabel className="addressLine2-input-label">Address L2 (optional):</InputLabel>
                     <input id="adr2" disabled={true} type="text" className="addressLine2-input" onChange={evt => this.newAddressLine2(evt)}/><br/><br/>
 
-                    {this.state.zipcodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
+                    {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
                     <InputLabel className="zipcode-input-label">Zipcode:</InputLabel>
                     <input id="zipcode" disabled={true} type="text" className="zipcode-input" onChange={evt => this.newZipcode(evt)}/><br/><br/>
 
@@ -119,15 +122,15 @@ class CitizenReport extends Component {
     }
 
     newAddressLine1(evt) {
-        this.setState({addressLine1: evt.target.value});
+        this.setState({address: evt.target.value});
     }
 
     newAddressLine2(evt) {
-        this.setState({addressLine2: evt.target.value});
+        this.setState({address_l2: evt.target.value});
     }
 
     newZipcode(evt) {
-        this.setState({zipcode: evt.target.value});
+        this.setState({zipCode: evt.target.value});
     }
 
     newCity(evt) {
@@ -135,11 +138,7 @@ class CitizenReport extends Component {
     }
 
     newState(evt) {
-        this.setState({State: evt.target.value});
-    }
-
-    updateDetails(evt) {
-        this.setState({details: evt.target.value});
+        this.setState({state: evt.target.value});
     }
 
     setElectric() {
@@ -156,15 +155,17 @@ class CitizenReport extends Component {
         this.setState({facility: "Water"})
         document.getElementById("facility").innerText = "Chosen Facility: Water"
     }
-
+    updateDetails(evt) {
+        this.setState({details: evt.target.value});
+    }
 
     submit(){
 
-        if(this.state.addressLine1.length === 0 && document.getElementById("adr1").disabled === false){
+        if(this.state.address.length === 0 && document.getElementById("adr1").disabled === false){
             this.setState({addressLine1Empty: true});
         } else this.setState({addressLine1Empty: false});
 
-        if(this.state.zipcode.length === 0 && document.getElementById("adr2").disabled === false){
+        if(this.state.zipCode.length === 0 && document.getElementById("adr2").disabled === false){
             this.setState({zipcodeEmpty: true});
         } else this.setState({zipcodeEmpty: false});
 

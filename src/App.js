@@ -3,6 +3,7 @@ import SignIn from "./SignIn";
 import Landing from "./Landing";
 import CreateAccount from "./CreateAccount";
 import CitizenHome from "./CitizenHome";
+import Reports from "./Reports";
 import React from 'react';
 import {
     BrowserRouter as Router,
@@ -34,6 +35,9 @@ const App = () => {
                 </Route>
                 <Route path="/create-account">
                     <CreateAccount />
+                </Route>
+                <Route path="/submissions">
+                    <Reports />
                 </Route>
                 <Route path="/">
                     <Landing />

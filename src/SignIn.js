@@ -8,8 +8,7 @@ import React from 'react';
 import Colors from "./Colors";
 
 const StyledSignIn = styled(CenteredColumn)`
-  padding: 0 64px;
-  background-color: ${Colors.green1};
+  ${Styles.pageSetup};
   ${Styles.centeredColumn};
   
   #title{

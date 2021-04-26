@@ -32,8 +32,9 @@ const StyledAccount = styled(CenteredColumn)`
     ${Styles.smallShadow};
   }
   
-  #emailLabel{
-    padding-top: 20px;
+  label{
+    display:block;
+    margin: 12px;
   }
 `;
 

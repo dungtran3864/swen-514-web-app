@@ -1,6 +1,11 @@
 import Colors from "./Colors";
 
 export default {
+    pageSetup:`
+        padding: 0 64px;
+        background-color: ${Colors.green1};
+        text-align: center;
+    `,
     header: `
         font-weight: 700;
         font-size: 2em;

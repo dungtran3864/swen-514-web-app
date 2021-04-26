@@ -8,8 +8,7 @@ import Colors from "./Colors";
 
 
 const StyledHome = styled(CenteredColumn)`
-  padding: 0 64px;
-  background-color: ${Colors.green1};
+  ${Styles.pageSetup};
   
   #header{
     h1{

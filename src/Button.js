@@ -14,7 +14,7 @@ const StyledLink = styled(Link)`
     align-items: center;
     cursor: pointer;
     background-color: ${Colors.green2};
-
+  
     font-weight: bold;
 
     img {

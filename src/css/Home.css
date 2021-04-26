@@ -38,6 +38,15 @@
   text-align: center;
 }
 
+.GovernmentHome{
+  text-align: center;
+
+}
+
+.GovernmentReport{
+  text-align: center;
+}
+
 .error-msg {
   color: red;
 }

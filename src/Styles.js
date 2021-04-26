@@ -28,18 +28,21 @@ export default {
         text-decoration: none;
     `,
     label:`
-        padding-top: 12px;
+        padding: 12px;
         display: block;
     `,
     input:`
-        padding: 6px;
+        padding: 12px;
+        display: block;
     `,
     body:`
-        padding-bottom: 40px;
+        
     `,
     form:`
-        padding: 10px;
-        padding: 5px; 
+        padding-right: 30px;
+        padding-left: 30px;
+        padding-top: 
+        padding-bottom: 60px;
         border-radius: 8px; 
         border: 2px solid ${Colors.green3};
         background-color: ${Colors.green2};

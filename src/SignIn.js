@@ -52,7 +52,7 @@ const StyledSignIn = styled(CenteredColumn)`
 
 const SignIn = () =>  {
     return (
-        <StyledSignIn className="SignIn">
+        <StyledSignIn>
             <header id="title">
                 <h1>Sign In</h1>
             </header>

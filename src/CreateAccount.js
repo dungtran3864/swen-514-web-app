@@ -1,7 +1,41 @@
 import './css/Home.css';
 import {Input, InputLabel} from "@material-ui/core";
 import Button from "./Button"
+import { CenteredColumn } from "./StyleBlocks";
+import styled from "styled-components";
+import Styles from "./Styles";
+import React from 'react';
+import Colors from "./Colors";
 import {Component} from "react";
+
+const StyledAccount = styled(CenteredColumn)`
+  #form{
+    padding: 10px;
+    ${Styles.darkOutline};
+    background-color: ${Colors.green2};
+  }
+  
+  header{
+    h1{
+      ${Styles.header}
+      font-style: italic;
+    }
+  }
+  
+  body{
+    padding-bottom: 40px;
+  }
+  
+  button{
+    ${Styles.darkOutline};
+    background-color: ${Colors.green2};
+    ${Styles.smallShadow};
+  }
+  
+  #emailLabel{
+    padding-top: 20px;
+  }
+`;
 
 class CreateAccount extends Component{
 
@@ -21,14 +55,14 @@ class CreateAccount extends Component{
 
     render(){
         return (
-            <div className="CreateAccount">
+            <StyledAccount><div className="CreateAccount">
                 <header className="create-account-header">
                     <h1>Create Account</h1>
                 </header>
-                <body>
+                <body><div id = "form">
 
                 {this.state.emailEmpty && <label className="error-msg">Email field is empty</label>}
-                <InputLabel htmlFor="email">Email:</InputLabel>
+                <InputLabel id={"emailLabel"} htmlFor="email">Email:</InputLabel>
                 <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)}/><br/><br/>
 
                 {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
@@ -56,12 +90,13 @@ class CreateAccount extends Component{
 
                 <button className="validate-button" onClick={() => this.createAccount()}>Verify</button><br/><br/>
                 <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
+                </div>
 
                 <label>================================</label><br/><br/>
                 <Button to={"/"} label={"Back"}/>
 
                 </body>
-            </div>
+            </div></StyledAccount>
         );
     }
 

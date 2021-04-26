@@ -1,7 +1,6 @@
 import './css/Home.css';
 import {Input, InputLabel} from "@material-ui/core";
 import Button from "./Button"
-/* TODO: Rename everything from App --> Home ASAP */
 
 const SignIn = () =>  {
     return (

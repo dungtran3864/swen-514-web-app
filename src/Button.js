@@ -2,15 +2,18 @@ import React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import Styles from "./Styles";
+import Colors from "./Colors";
 
 const StyledLink = styled(Link)`
     ${Styles.centeredRow}
     ${Styles.resetLink}
+    ${Styles.darkOutline}
+    ${Styles.smallShadow}
 
     display: inline-flex;
     align-items: center;
-    align-self: flex-start;
     cursor: pointer;
+    background-color: ${Colors.green2};
 
     font-weight: bold;
 

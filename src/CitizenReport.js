@@ -173,7 +173,7 @@ class CitizenReport extends Component {
             this.setState({cityEmpty: true});
         } else this.setState({cityEmpty: false});
 
-        if(this.state.State.length === 0 && document.getElementById("state").disabled === false){
+        if(this.state.state.length === 0 && document.getElementById("state").disabled === false){
             this.setState({stateEmpty: true});
         } else this.setState({stateEmpty: false});
 

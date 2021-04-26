@@ -21,7 +21,7 @@ export default {
         color: ${Colors.black};
         text-decoration: none;
     `,
-    darkOutline: `border: 1px solid ${Colors.darkGray};`,
+    darkOutline: `padding: 5px; border-radius: 8px; border: 2px solid ${Colors.green3};`,
     mediumOutline: `border: 1px solid ${Colors.mediumGray};`,
     smallShadow: "box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.1);",
     smallShadowRaised: "box-shadow: 4px 8px 8px 0px rgba(0,0,0,0.1);",

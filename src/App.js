@@ -13,6 +13,7 @@ import {
 import CitizenReport from "./CitizenReport";
 import GovernmentReport from "./GovernmentReport";
 import GovernmentHome from "./GovernmentHome";
+import ManageAccount from "./ManageAccount";
 
 const App = () => {
     return(
@@ -38,6 +39,9 @@ const App = () => {
                 </Route>
                 <Route path="/submissions">
                     <Reports />
+                </Route>
+                <Route path="/manage-account">
+                    <ManageAccount />
                 </Route>
                 <Route path="/">
                     <Landing />

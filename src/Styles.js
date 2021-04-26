@@ -11,6 +11,7 @@ export default {
         font-size: 2em;
         width: 100%;
         text-align: center;
+        font-style: italic;
     `,
     centeredColumn: `
         display: flex;
@@ -25,6 +26,23 @@ export default {
     resetLink: `
         color: ${Colors.black};
         text-decoration: none;
+    `,
+    label:`
+        padding-top: 12px;
+        display: block;
+    `,
+    input:`
+        padding: 6px;
+    `,
+    body:`
+        padding-bottom: 40px;
+    `,
+    form:`
+        padding: 10px;
+        padding: 5px; 
+        border-radius: 8px; 
+        border: 2px solid ${Colors.green3};
+        background-color: ${Colors.green2};
     `,
     darkOutline: `padding: 5px; border-radius: 8px; border: 2px solid ${Colors.green3};`,
     mediumOutline: `border: 1px solid ${Colors.mediumGray};`,

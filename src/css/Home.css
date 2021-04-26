@@ -18,6 +18,15 @@
   color: white;
 }
 
+.Account-Header{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: black;
+}
+
 .SignIn{
   text-align: center;
 }
@@ -50,4 +59,14 @@
 .error-msg {
   color: red;
   font-weight: 500;
+}
+
+.SignIn{
+}
+
+.Form{
+}
+
+.Manage-Account{
+  text-align: center;
 }

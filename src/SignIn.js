@@ -25,20 +25,12 @@ const StyledSignIn = styled(CenteredColumn)`
     ${Styles.darkOutline};
   }
   
-  #email{
-    padding-top: 12px;
+  #label{
+    ${Styles.label};
   }
   
-  #emailIn{
-    padding: 6px;
-  }
-  
-  #password {
-    padding-top: 12px;
-  }
-  
-  #passwordIn{
-    padding: 6px;
+  #input{
+    ${Styles.input};
   }
 
   #buttons{
@@ -60,17 +52,17 @@ const StyledSignIn = styled(CenteredColumn)`
 
 const SignIn = () =>  {
     return (
-        <StyledSignIn>
-            <header className="sign-in-header" id={"title"}>
+        <StyledSignIn className="SignIn">
+            <header id="title">
                 <h1>Sign In</h1>
             </header>
             <body>
                 <form>
-                    <div id={"login"}>
-                        <InputLabel htmlFor="email" id={"email"}>Email:</InputLabel><br/>
-                        <Input type="text" id="emailIn" name="email"/><br/>
-                        <InputLabel htmlFor="password" id={"password"}>Password:</InputLabel><br/>
-                        <Input type="password" id="passwordIn" name="password"/><br/><br/>
+                    <div id="login">
+                        <InputLabel htmlFor="email" id="label">Email:</InputLabel><br/>
+                        <Input type="text" id="input" name="email"/><br/>
+                        <InputLabel htmlFor="password" id="label">Password:</InputLabel><br/>
+                        <Input type="password" id="input" name="password"/><br/><br/>
                     </div>
 
                     <div id={"buttons"}>

@@ -9,21 +9,11 @@ import Colors from "./Colors";
 import {Component} from "react";
 
 const StyledAccount = styled(CenteredColumn)`
-  #form{
-    padding: 10px;
-    ${Styles.darkOutline};
-    background-color: ${Colors.green2};
-  }
-  
+  ${Styles.pageSetup};
+  ${Styles.centeredColumn};
+
   header{
-    h1{
-      ${Styles.header}
-      font-style: italic;
-    }
-  }
-  
-  body{
-    padding-bottom: 40px;
+    ${Styles.header};
   }
   
   button{
@@ -31,10 +21,11 @@ const StyledAccount = styled(CenteredColumn)`
     background-color: ${Colors.green2};
     ${Styles.smallShadow};
   }
-  
-  label{
-    ${Styles.label};
+
+  hr{
+    ${Styles.hr};
   }
+  
 `;
 
 class CreateAccount extends Component{
@@ -55,48 +46,62 @@ class CreateAccount extends Component{
 
     render(){
         return (
-            <StyledAccount><div className="CreateAccount">
-                <header className="create-account-header">
+            <StyledAccount>
+                <header className="CreateAccount">
                     <h1>Create Account</h1>
                 </header>
-                <body><div id = "form">
+                <body>
+                    <div className="Form">
 
-                {this.state.emailEmpty && <label className="error-msg">Email field is empty</label>}
-                <InputLabel htmlFor="email">Email:</InputLabel>
-                <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            {this.state.emailEmpty && <label className="error-msg">Email field is empty</label>}
+                            <InputLabel htmlFor="email">Email:</InputLabel>
+                            <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)}/><br/><br/>
+                        </div>
 
-                {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
-                <InputLabel htmlFor="password">Password:</InputLabel>
-                <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
+                            <InputLabel htmlFor="password">Password:</InputLabel>
+                            <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/><br/>
+                        </div>
 
-                {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
-                <InputLabel htmlFor="address">Address:</InputLabel>
-                <Input type="text" id="adrL1" name="addressLine1" onChange={evt => this.updateAddressLine1(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
+                            <InputLabel htmlFor="address">Address:</InputLabel>
+                            <Input type="text" id="adrL1" name="addressLine1" onChange={evt => this.updateAddressLine1(evt)}/><br/><br/>
+                        </div>
 
-                <InputLabel htmlFor="address">Address L2 (optional):</InputLabel>
-                <Input type="text" id="adrl2" name="addressLine2" onChange={evt => this.updateAddressLine2(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            <InputLabel htmlFor="address">Address L2 (optional):</InputLabel>
+                            <Input type="text" id="adrl2" name="addressLine2" onChange={evt => this.updateAddressLine2(evt)}/><br/><br/>
+                        </div>
 
-                {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
-                <InputLabel htmlFor="zipCode">Zip Code:</InputLabel>
-                <Input type="text" id="zipCode" name="zipCode" onChange={evt => this.updateZipcode(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
+                            <InputLabel htmlFor="zipCode">Zip Code:</InputLabel>
+                            <Input type="text" id="zipCode" name="zipCode" onChange={evt => this.updateZipcode(evt)}/><br/><br/>
+                        </div>
 
-                {this.state.cityEmpty && <label className="error-msg">City field is empty</label>}
-                <InputLabel htmlFor="city">City:</InputLabel>
-                <Input type="text" id="city" name="city" onChange={evt => this.updateCity(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            {this.state.cityEmpty && <label className="error-msg">City field is empty</label>}
+                            <InputLabel htmlFor="city">City:</InputLabel>
+                            <Input type="text" id="city" name="city" onChange={evt => this.updateCity(evt)}/><br/><br/>
+                        </div>
 
-                {this.state.stateEmpty && <label className="error-msg">State field is empty</label>}
-                <InputLabel htmlFor="state">State:</InputLabel>
-                <Input type="text" id="state" name="state" onChange={evt => this.updateState(evt)}/><br/><br/>
+                        <div className="Form-Component">
+                            {this.state.stateEmpty && <label className="error-msg">State field is empty</label>}
+                            <InputLabel htmlFor="state">State:</InputLabel>
+                            <Input type="text" id="state" name="state" onChange={evt => this.updateState(evt)}/><br/><br/>
+                        </div>
 
-                <button className="validate-button" onClick={() => this.createAccount()}>Verify</button><br/><br/>
-                <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
-                </div>
+                        <button className="validate-button" onClick={() => this.createAccount()}>Verify</button><br/><br/>
+                        <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
 
-                <label>================================</label><br/><br/>
+                    </div>
+                <hr />
                 <Button to={"/"} label={"Exit Site"}/>
-
                 </body>
-            </div></StyledAccount>
+            </StyledAccount>
         );
     }
 

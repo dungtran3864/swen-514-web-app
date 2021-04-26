@@ -35,8 +35,10 @@ export default {
         padding: 12px;
         display: block;
     `,
-    body:`
-        
+    hr:`
+        height: 3px;
+        background-color: ${Colors.green3};
+        border: none;
     `,
     form:`
         padding: 30px;

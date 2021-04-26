@@ -37,8 +37,6 @@ const StyledReport = styled(CenteredColumn)`
   }
   
   #locationForm{
-    margin-top: 8px;
-    margin-bottom: 20px;
     button{
       margin: 12px;
       ${Styles.darkOutline};
@@ -108,7 +106,7 @@ class CitizenReport extends Component {
                                 <button id={"btn"} onClick={() => this.setElectric()}> Electric </button>
                                 <button id={"btn"} onClick={() => this.setRoads()}> Roads </button>
                                 <button id={"btn"} onClick={() => this.setWater()}> Water </button><br/>
-                                <label>Chosen Facility: N/A</label><br/><br/>
+                                <label id="facility">Chosen Facility: N/A</label><br/><br/>
 
                             </div>
 

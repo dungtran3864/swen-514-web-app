@@ -41,12 +41,6 @@ const StyledSignIn = styled(CenteredColumn)`
     align: center;
   }
   
-  hr{
-    height: 3px;
-    background-color: ${Colors.green3};
-    border: none;
-  }
-  
 ` ;
 
 class SignIn extends Component{
@@ -68,11 +62,11 @@ class SignIn extends Component{
     render() {
         return (
             <StyledSignIn>
-                <header>
+                <header className="Account-Header">
                     <h1>Sign In</h1>
                 </header>
                 <body>
-                <div className="form">
+                <div className="Form">
                     <div id="login">
                         <InputLabel htmlFor="email" id="emailLabel">Email:</InputLabel>
                         <Input type="text" id="email" name="email"/>
@@ -86,7 +80,7 @@ class SignIn extends Component{
                         <Button to="/create-account" label="Create Account"/>
                     </div>
                 </div>
-                <hr/>
+                <hr />
                 <Button to={"/"} label={"Back"}/>
                 </body>
             </StyledSignIn>

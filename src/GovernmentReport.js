@@ -96,6 +96,9 @@ class GovernmentReport extends Component {
         return (
             <StyledReport>
                 <div className="GovernmentReport">
+                    <head>
+                        <title>Government Report</title>
+                    </head>
                     <header className="government-report-header" id={"title"}>
                         <h1>Report Issue</h1>
                     </header>

@@ -1,10 +1,14 @@
 import './css/Home.css';
 import Button from "./Button"
+import React from "react";
 
 const CitizenHome = () => {
 
     return (
         <div className="CitizenHome">
+            <head>
+                <title>WSCS - Home</title>
+            </head>
             <header className="Account-Header">
                 <h1>Welcome User</h1>
             </header>

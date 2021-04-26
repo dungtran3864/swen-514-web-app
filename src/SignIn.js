@@ -4,18 +4,15 @@ import Button from "./Button"
 import Styles from "./Styles";
 import { CenteredColumn } from "./StyleBlocks";
 import styled from "styled-components";
-import React from 'react';
+import React, {Component} from 'react';
 import Colors from "./Colors";
 
 const StyledSignIn = styled(CenteredColumn)`
   ${Styles.pageSetup};
   ${Styles.centeredColumn};
   
-  #title{
-    h1{
-      ${Styles.header}
-      font-style: italic;
-    }
+  header{
+    ${Styles.header};
   }
   
   #email{
@@ -35,32 +32,47 @@ const StyledSignIn = styled(CenteredColumn)`
   }
 
   #buttons{
-    align: center;
-    display: inline-block;
     padding: 12px;
     ${Styles.centeredRow};
-    
-    #signOut{
-      background-color: ${Colors.red};
-    }
-    
-    
   }
+  
   #or{
     margin: 8px;
     align: center;
   }
   
+  hr{
+    height: 3px;
+    background-color: ${Colors.green3};
+    border: none;
+  }
+  
 ` ;
 
-const SignIn = () =>  {
-    return (
-        <StyledSignIn>
-            <header id="title">
-                <h1>Sign In</h1>
-            </header>
-            <body>
-                <div className="form" id={"formed"}>
+class SignIn extends Component{
+
+    constructor(props) {
+        super(props);
+        console.log(this.props)
+        this.state = {
+            email: "",
+            password: "",
+            address: "",
+            address_l2: "",
+            zipCode: "",
+            city: "",
+            state: ""
+        }
+    }
+
+    render() {
+        return (
+            <StyledSignIn>
+                <header>
+                    <h1>Sign In</h1>
+                </header>
+                <body>
+                <div className="form">
                     <div id="login">
                         <InputLabel htmlFor="email" id="emailLabel">Email:</InputLabel>
                         <Input type="text" id="email" name="email"/>
@@ -68,17 +80,18 @@ const SignIn = () =>  {
                         <Input type="password" id="password" name="password"/><br/>
                     </div>
 
-                    <div id={"buttons"}>
-                        <Button to={"/citizen-home"} label={"Submit"}/><br/>
-                        <label id={"or"}> -OR- </label>
-                        <Button to={"/create-account"} label={"Create Account"}/>
+                    <div id="buttons">
+                        <Button to="/citizen-home" label="Submit"/><br/>
+                        <label id="or"> -OR- </label>
+                        <Button to="/create-account" label="Create Account"/>
                     </div>
                 </div>
-                <label>================================</label><br/>
+                <hr/>
                 <Button to={"/"} label={"Back"}/>
-            </body>
-        </StyledSignIn>
-    );
+                </body>
+            </StyledSignIn>
+        );
+    }
 }
 
 export default SignIn;

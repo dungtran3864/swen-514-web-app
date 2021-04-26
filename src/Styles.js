@@ -8,7 +8,7 @@ export default {
     `,
     header: `
         font-weight: 700;
-        font-size: 2em;
+        font-size: 1.75em;
         width: 100%;
         text-align: center;
         font-style: italic;

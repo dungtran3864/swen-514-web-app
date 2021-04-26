@@ -18,24 +18,25 @@ const StyledSignIn = styled(CenteredColumn)`
     }
   }
   
-  #login {
-    text-align: center;
-    padding: 6px;
-    background-color: ${Colors.green2};
-    ${Styles.darkOutline};
-  }
-  
-  #label{
+  #email{
     ${Styles.label};
   }
   
-  #input{
+  #password{
+    ${Styles.input};
+  }
+  
+  #emailLabel{
+    ${Styles.label};
+  }
+
+  #passwordLabel{
     ${Styles.input};
   }
 
   #buttons{
     align: center;
-    display: flex;
+    display: inline-block;
     padding: 12px;
     ${Styles.centeredRow};
     
@@ -43,11 +44,13 @@ const StyledSignIn = styled(CenteredColumn)`
       background-color: ${Colors.red};
     }
     
-    #or{
-      padding: 8px;
-      align: center;
-    }
+    
   }
+  #or{
+    margin: 8px;
+    align: center;
+  }
+  
 ` ;
 
 const SignIn = () =>  {
@@ -57,23 +60,22 @@ const SignIn = () =>  {
                 <h1>Sign In</h1>
             </header>
             <body>
-                <form>
+                <div className="form" id={"formed"}>
                     <div id="login">
-                        <InputLabel htmlFor="email" id="label">Email:</InputLabel><br/>
-                        <Input type="text" id="input" name="email"/><br/>
-                        <InputLabel htmlFor="password" id="label">Password:</InputLabel><br/>
-                        <Input type="password" id="input" name="password"/><br/><br/>
+                        <InputLabel htmlFor="email" id="emailLabel">Email:</InputLabel>
+                        <Input type="text" id="email" name="email"/>
+                        <InputLabel htmlFor="password" id="passwordLabel">Password:</InputLabel>
+                        <Input type="password" id="password" name="password"/><br/>
                     </div>
 
                     <div id={"buttons"}>
-                        <Button to={"/citizen-home"} label={"Submit"}/><br/><br/>
-                        <label id={"or"}> -OR- </label><br/><br/>
-                        <Button to={"/create-account"} label={"Create Account"}/><br/><br/>
+                        <Button to={"/citizen-home"} label={"Submit"}/><br/>
+                        <label id={"or"}> -OR- </label>
+                        <Button to={"/create-account"} label={"Create Account"}/>
                     </div>
-
-                    <label>================================</label><br/><br/>
-                    <Button to={"/"} label={"Back"}/>
-                </form>
+                </div>
+                <label>================================</label><br/>
+                <Button to={"/"} label={"Back"}/>
             </body>
         </StyledSignIn>
     );

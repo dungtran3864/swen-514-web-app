@@ -33,8 +33,7 @@ const StyledAccount = styled(CenteredColumn)`
   }
   
   label{
-    display:block;
-    margin: 12px;
+    ${Styles.label};
   }
 `;
 
@@ -63,7 +62,7 @@ class CreateAccount extends Component{
                 <body><div id = "form">
 
                 {this.state.emailEmpty && <label className="error-msg">Email field is empty</label>}
-                <InputLabel id={"emailLabel"} htmlFor="email">Email:</InputLabel>
+                <InputLabel htmlFor="email">Email:</InputLabel>
                 <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)}/><br/><br/>
 
                 {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
@@ -94,7 +93,7 @@ class CreateAccount extends Component{
                 </div>
 
                 <label>================================</label><br/><br/>
-                <Button to={"/"} label={"Back"}/>
+                <Button to={"/"} label={"Exit Site"}/>
 
                 </body>
             </div></StyledAccount>

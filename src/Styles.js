@@ -39,13 +39,11 @@ export default {
         
     `,
     form:`
-        padding-right: 30px;
-        padding-left: 30px;
-        padding-top: 
-        padding-bottom: 60px;
+        padding: 30px;
         border-radius: 8px; 
         border: 2px solid ${Colors.green3};
         background-color: ${Colors.green2};
+        text-align: center;
     `,
     darkOutline: `padding: 5px; border-radius: 8px; border: 2px solid ${Colors.green3};`,
     mediumOutline: `border: 1px solid ${Colors.mediumGray};`,

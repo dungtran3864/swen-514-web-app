@@ -61,9 +61,13 @@
   font-weight: 500;
 }
 
-.Form{
-}
-
 .Manage-Account{
   text-align: center;
+}
+
+.form{
+  padding: 0px;
+  border-radius: 8px;
+  background-color: #B6C197;
+  border: 2px solid #8A9B68;
 }

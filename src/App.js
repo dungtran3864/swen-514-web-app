@@ -19,7 +19,7 @@ const App = () => {
     return(
         <Router>
             <Switch>
-                <Route path="/submit-report">
+                <Route path="/citizen-submit-report">
                     <CitizenReport />
                 </Route>
                 <Route path="/citizen-home">

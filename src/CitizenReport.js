@@ -15,12 +15,8 @@ const StyledReport = styled(CenteredColumn)`
     ${Styles.form};
   }
   
-  #btn{
+  button{
     ${Styles.button};
-  }
-  
-  #btns{
-    margin: 6px;
   }
   
   #other{
@@ -68,59 +64,59 @@ class CitizenReport extends Component {
     render() {
         return (
             <StyledReport>
-                <div className="CitizenReport">
-                    <header className="Account-Header">
-                        <h1>Report Issue</h1>
-                    </header>
-                    <body id = "form">
-                        <div id={"btns"}>
-                            <button onClick={() => this.setOtherLocationDisable()} id={"btn"}>Use My Address</button><br/>
-                            <button className="other-location-button" onClick={() => this.setOtherLocationEnable()} id={"btn"}>Use Other Address</button><br/>
-                        </div>
+                <head>
+                    <title>Citizen Report</title>
+                </head>
+                <header className="Account-Header">
+                    <h1>Citizen Issue Report</h1>
+                </header>
+                <body id = "form" className="Form">
+                    <button onClick={() => this.setOtherLocationDisable()}>Use My Address</button><br/>
+                    <button className="other-location-button" onClick={() => this.setOtherLocationEnable()} id={"btn"}>Use Other Address</button><br/>
 
-                        <div id={"other"}>
-                            <label>Other Location:</label><br/>
 
-                            <div id={"locationForm"}>
-                                {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
-                                <InputLabel className="addressLine1-input-label">Address:</InputLabel>
-                                <input id="adr1" disabled={true} type="text" className="addressLine1-input" onChange={evt => this.newAddressLine1(evt)}/><br/><br/>
+                    <div id={"other"}>
+                        <label>Other Location:</label><br/>
 
-                                <InputLabel className="addressLine2-input-label">Address L2 (optional):</InputLabel>
-                                <input id="adr2" disabled={true} type="text" className="addressLine2-input" onChange={evt => this.newAddressLine2(evt)}/><br/><br/>
+                        <div id={"locationForm"}>
+                            {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
+                            <InputLabel className="addressLine1-input-label">Address:</InputLabel>
+                            <input id="adr1" disabled={true} type="text" className="addressLine1-input" onChange={evt => this.newAddressLine1(evt)}/><br/><br/>
 
-                                {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
-                                <InputLabel className="zipcode-input-label">Zipcode:</InputLabel>
-                                <input id="zipcode" disabled={true} type="text" className="zipcode-input" onChange={evt => this.newZipcode(evt)}/><br/><br/>
+                            <InputLabel className="addressLine2-input-label">Address L2 (optional):</InputLabel>
+                            <input id="adr2" disabled={true} type="text" className="addressLine2-input" onChange={evt => this.newAddressLine2(evt)}/><br/><br/>
 
-                                {this.state.cityEmpty && <label className="error-msg">City field is empty</label>}
-                                <InputLabel className="city-input-label">City:</InputLabel>
-                                <input id="city" disabled={true} type="text" className="city-input" onChange={evt => this.newCity(evt)}/><br/><br/>
+                            {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
+                            <InputLabel className="zipcode-input-label">Zipcode:</InputLabel>
+                            <input id="zipcode" disabled={true} type="text" className="zipcode-input" onChange={evt => this.newZipcode(evt)}/><br/><br/>
 
-                                {this.state.stateEmpty && <label className="error-msg">State field is empty</label>}
-                                <InputLabel className="state-input-label" >State:</InputLabel>
-                                <input id="state" disabled={true} type="text" className="state-input" onChange={evt => this.newState(evt)}/><br/><br/>
+                            {this.state.cityEmpty && <label className="error-msg">City field is empty</label>}
+                            <InputLabel className="city-input-label">City:</InputLabel>
+                            <input id="city" disabled={true} type="text" className="city-input" onChange={evt => this.newCity(evt)}/><br/><br/>
 
-                                {this.state.facilityEmpty && <label className="error-msg">Facility not chosen</label>}<br/>
-                                <label>Select Facility:</label><br/>
-                                <button id={"btn"} onClick={() => this.setElectric()}> Electric </button>
-                                <button id={"btn"} onClick={() => this.setRoads()}> Roads </button>
-                                <button id={"btn"} onClick={() => this.setWater()}> Water </button><br/>
-                                <label id="facility">Chosen Facility: N/A</label><br/><br/>
+                            {this.state.stateEmpty && <label className="error-msg">State field is empty</label>}
+                            <InputLabel className="state-input-label" >State:</InputLabel>
+                            <input id="state" disabled={true} type="text" className="state-input" onChange={evt => this.newState(evt)}/><br/><br/>
 
-                            </div>
-
-                        {this.state.detailsEmpty && <label className="error-msg">Details field is empty</label>}
-                        <InputLabel id={"formText"} className="state-input-label">Details:</InputLabel>
-                        <Input type="text" className="details-input" onChange={evt => this.updateDetails(evt)}/><br/><br/>
-
-                        <button id={"btn"} className="validate-button" onClick={() => this.submit()}>Verify</button><br/><br/>
+                            {this.state.facilityEmpty && <label className="error-msg">Facility not chosen</label>}<br/>
+                            <label>Select Facility:</label><br/>
+                            <button id={"btn"} onClick={() => this.setElectric()}> Electric </button>
+                            <button id={"btn"} onClick={() => this.setRoads()}> Roads </button>
+                            <button id={"btn"} onClick={() => this.setWater()}> Water </button><br/>
+                            <label id="facility">Chosen Facility: N/A</label><br/><br/>
 
                         </div>
 
-                    <Button label="Submit" to="/citizen-home"/>
-                    </body>
-                </div>
+                    {this.state.detailsEmpty && <label className="error-msg">Details field is empty</label>}
+                    <InputLabel id={"formText"} className="state-input-label">Details:</InputLabel>
+                    <Input type="text" className="details-input" onChange={evt => this.updateDetails(evt)}/><br/><br/>
+
+                    <button id={"btn"} className="validate-button" onClick={() => this.submit()}>Verify</button><br/><br/>
+
+                    </div>
+
+                <Button label="Submit" to="/citizen-home"/>
+                </body>
             </StyledReport>
         );
     }

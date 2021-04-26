@@ -48,11 +48,16 @@ export default {
         text-align: center;
     `,
     button:`
+        display: inline-flex;
+        justify-content: center;
+        color: ${Colors.black};
+        text-decoration: none;
+        padding: 5px; border-radius: 8px; border: 2px solid ${Colors.green3};
+        box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.1);
+        cursor: pointer;
         background-color: ${Colors.green2};
-        padding: 6px;
-        margin: 6px;
-        border-radius: 8px; 
-        border: 2px solid ${Colors.green3};
+        margin: 12px;
+        font-weight: bold;
     `,
     darkOutline: `padding: 5px; border-radius: 8px; border: 2px solid ${Colors.green3};`,
     mediumOutline: `border: 1px solid ${Colors.mediumGray};`,

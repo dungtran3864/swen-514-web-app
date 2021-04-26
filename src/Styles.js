@@ -45,6 +45,13 @@ export default {
         background-color: ${Colors.green2};
         text-align: center;
     `,
+    button:`
+        background-color: ${Colors.green2};
+        padding: 6px;
+        margin: 6px;
+        border-radius: 8px; 
+        border: 2px solid ${Colors.green3};
+    `,
     darkOutline: `padding: 5px; border-radius: 8px; border: 2px solid ${Colors.green3};`,
     mediumOutline: `border: 1px solid ${Colors.mediumGray};`,
     smallShadow: "box-shadow: 2px 2px 4px 0px rgba(0,0,0,0.1);",

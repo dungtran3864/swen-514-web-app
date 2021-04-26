@@ -1,25 +1,11 @@
 import './css/Home.css';
 import Button from "./Button"
-import Styles from "./Styles"
-import styled from "styled-components";
-import {CenteredColumn} from "./StyleBlocks";
-
-const StyledGovHome = styled(CenteredColumn)`
-
-    header{
-      h1{
-        ${Styles.header}
-        font-style: italic;
-      }
-    }
-    
-`;
 
 const GovernmentHome = () => {
 
     return (
-        <div className="GovernmentHome"><StyledGovHome>
-            <header className="gov-home-header">
+        <div className="GovernmentHome">
+            <header className="Account-Header">
                 <h1>Welcome User</h1>
             </header>
             <body>
@@ -31,7 +17,7 @@ const GovernmentHome = () => {
                 <Button to="/" label="Sign Out"/><br/><br/>
             </form>
             </body>
-        </StyledGovHome></div>
+        </div>
     );
 }
 

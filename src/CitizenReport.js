@@ -9,35 +9,14 @@ import Colors from "./Colors";
 import {CenteredColumn} from "./StyleBlocks";
 
 const StyledReport = styled(CenteredColumn)`
-  padding: 0 64px;
-  ${Styles.centeredColumn};
-  //position: relative;
-  
-  Div{
-    padding: 10px;
-  }
-  
-  #submit{
-    outline: 3px solid black;
-  }
-  
-  #title{
-    h1{
-      ${Styles.header}
-      font-style: italic;
-    }
-  }
+  ${Styles.pageSetup};
   
   #form{
-    ${Styles.darkOutline};
-    background-color: ${Colors.green2};
+    ${Styles.form};
   }
   
   #btn{
-    background-color: ${Colors.green2};
-    padding: 6px;
-    margin: 6px;
-    ${Styles.darkOutline};
+    ${Styles.button};
   }
   
   #btns{
@@ -67,10 +46,6 @@ const StyledReport = styled(CenteredColumn)`
     }
   }
   
-  #facility {
-    //outline: 3px solid pink;
-  }
-  
 `;
 
 class CitizenReport extends Component {
@@ -95,12 +70,11 @@ class CitizenReport extends Component {
     render() {
         return (
             <StyledReport>
-                <div className="CitizenReport" id ={"CitizenReport"}>
-                    <header className="citizen-report-header" id={"title"}>
+                <div className="CitizenReport">
+                    <header className="Account-Header">
                         <h1>Report Issue</h1>
                     </header>
                     <body id = "form">
-
                         <div id={"btns"}>
                             <button onClick={() => this.setOtherLocationDisable()} id={"btn"}>Use My Address</button><br/>
                             <button className="other-location-button" onClick={() => this.setOtherLocationEnable()} id={"btn"}>Use Other Address</button><br/>
@@ -134,7 +108,7 @@ class CitizenReport extends Component {
                                 <button id={"btn"} onClick={() => this.setElectric()}> Electric </button>
                                 <button id={"btn"} onClick={() => this.setRoads()}> Roads </button>
                                 <button id={"btn"} onClick={() => this.setWater()}> Water </button><br/>
-                                <label id="facility">Chosen Facility: N/A</label><br/><br/>
+                                <label>Chosen Facility: N/A</label><br/><br/>
 
                             </div>
 
@@ -146,7 +120,7 @@ class CitizenReport extends Component {
 
                         </div>
 
-                    <Button id={"submit"} label="Submit" to="/citizen-home"/>
+                    <Button label="Submit" to="/citizen-home"/>
                     </body>
                 </div>
             </StyledReport>

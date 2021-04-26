@@ -10,6 +10,8 @@ import {
     Route
 } from "react-router-dom";
 import CitizenReport from "./CitizenReport";
+import GovernmentReport from "./GovernmentReport";
+import GovernmentHome from "./GovernmentHome";
 
 const App = () => {
     return(
@@ -20,6 +22,12 @@ const App = () => {
                 </Route>
                 <Route path="/citizen-home">
                     <CitizenHome />
+                </Route>
+                <Route path="/gov-submit-report">
+                    <GovernmentReport />
+                </Route>
+                <Route path="/gov-home">
+                    <GovernmentHome />
                 </Route>
                 <Route path="/sign-in">
                     <SignIn />

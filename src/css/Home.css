@@ -67,10 +67,17 @@
   border-radius: 8px;
   background-color: #B6C197;
   border: 2px solid #8A9B68;
+  text-align: center;
 }
 
 .Form-Component{
   border: 3px solid orange;
   margin: 12px;
   pading: 8px;
+}
+
+.input-label{
+  font-weight: 500;
+  padding: 8px;
+  display: block;
 }

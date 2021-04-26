@@ -28,7 +28,8 @@ export default {
         text-decoration: none;
     `,
     label:`
-        padding: 12px;
+        font-weight: 500;
+        padding: 8px;
         display: block;
     `,
     input:`
@@ -45,7 +46,7 @@ export default {
         border-radius: 8px; 
         border: 2px solid ${Colors.green3};
         background-color: ${Colors.green2};
-        text-align: center;
+        
     `,
     button:`
         display: inline-flex;

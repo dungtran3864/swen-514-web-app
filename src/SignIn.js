@@ -43,7 +43,20 @@ const StyledSignIn = styled(CenteredColumn)`
   
 ` ;
 
+const axios = require('axios').default;
+
 class SignIn extends Component{
+
+    axiosPost(email, password){
+        axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
+            "email": "email",
+            "password": "password"
+        }).then(function (response){
+            console.log(response);
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
 
     constructor(props) {
         super(props);
@@ -67,6 +80,7 @@ class SignIn extends Component{
                         <Input type="text" id="email" name="email"/>
                         <InputLabel htmlFor="password" id="passwordLabel">Password:</InputLabel>
                         <Input type="password" id="password" name="password"/><br/>
+                        <button id="validate">Validate</button>
                     </div>
 
                     <div id="buttons">
@@ -81,9 +95,7 @@ class SignIn extends Component{
             </StyledSignIn>
         );
     }
-
-
-
 }
+
 
 export default SignIn;

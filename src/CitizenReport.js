@@ -7,6 +7,7 @@ import Styles from "./Styles";
 import React from 'react';
 import Colors from "./Colors";
 import {CenteredColumn} from "./StyleBlocks";
+import axios from "axios";
 
 const StyledReport = styled(CenteredColumn)`
   padding: 0 64px;
@@ -79,13 +80,11 @@ class CitizenReport extends Component {
         super(props);
         console.log(this.props)
         this.state = {
-            email: "",
-            password: "",
-            address: "",
-            address_l2: "",
-            zipCode: "",
-            city: "",
-            state: "",
+            newAddress: "",
+            newAddress_l2: "",
+            newZipCode: "",
+            newCity: "",
+            newState: "",
             facility: "",
             details: "",
             citizen_id:""
@@ -110,31 +109,31 @@ class CitizenReport extends Component {
                             <label>Other Location:</label><br/>
 
                             <div id={"locationForm"}>
-                                {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
+                                {this.state.newAddressEmpty && <label className="error-msg">Address field is empty</label>}
                                 <InputLabel className="addressLine1-input-label">Address:</InputLabel>
                                 <input id="adr1" disabled={true} type="text" className="addressLine1-input" onChange={evt => this.newAddressLine1(evt)}/><br/><br/>
 
                                 <InputLabel className="addressLine2-input-label">Address L2 (optional):</InputLabel>
                                 <input id="adr2" disabled={true} type="text" className="addressLine2-input" onChange={evt => this.newAddressLine2(evt)}/><br/><br/>
 
-                                {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
+                                {this.state.newZipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
                                 <InputLabel className="zipcode-input-label">Zipcode:</InputLabel>
                                 <input id="zipcode" disabled={true} type="text" className="zipcode-input" onChange={evt => this.newZipcode(evt)}/><br/><br/>
 
-                                {this.state.cityEmpty && <label className="error-msg">City field is empty</label>}
+                                {this.state.newCityEmpty && <label className="error-msg">City field is empty</label>}
                                 <InputLabel className="city-input-label">City:</InputLabel>
                                 <input id="city" disabled={true} type="text" className="city-input" onChange={evt => this.newCity(evt)}/><br/><br/>
 
-                                {this.state.stateEmpty && <label className="error-msg">State field is empty</label>}
+                                {this.state.newStateEmpty && <label className="error-msg">State field is empty</label>}
                                 <InputLabel className="state-input-label" >State:</InputLabel>
                                 <input id="state" disabled={true} type="text" className="state-input" onChange={evt => this.newState(evt)}/><br/><br/>
 
-                                {this.state.facilityEmpty && <label className="error-msg">Facility not chosen</label>}<br/>
+                                {this.state.facilityEmpty && <label className="error-msg">Facility not chosen</label>}
                                 <label>Select Facility:</label><br/>
                                 <button id={"btn"} onClick={() => this.setElectric()}> Electric </button>
                                 <button id={"btn"} onClick={() => this.setRoads()}> Roads </button>
                                 <button id={"btn"} onClick={() => this.setWater()}> Water </button><br/>
-                                <label id="facility">Chosen Facility: N/A</label><br/><br/>
+                                <label id="facility">Chosen Facility: N/A</label><br/>
 
                             </div>
 
@@ -200,23 +199,23 @@ class CitizenReport extends Component {
     }
 
     newAddressLine1(evt) {
-        this.setState({address: evt.target.value});
+        this.setState({newAddress: evt.target.value});
     }
 
     newAddressLine2(evt) {
-        this.setState({address_l2: evt.target.value});
+        this.setState({newAddress_l2: evt.target.value});
     }
 
     newZipcode(evt) {
-        this.setState({zipCode: evt.target.value});
+        this.setState({newZipCode: evt.target.value});
     }
 
     newCity(evt) {
-        this.setState({city: evt.target.value});
+        this.setState({newCity: evt.target.value});
     }
 
     newState(evt) {
-        this.setState({state: evt.target.value});
+        this.setState({newState: evt.target.value});
     }
 
     setElectric() {
@@ -239,29 +238,67 @@ class CitizenReport extends Component {
 
     submit(){
 
-        if(this.state.address.length === 0 && document.getElementById("adr1").disabled === false){
-            this.setState({addressLine1Empty: true});
-        } else this.setState({addressLine1Empty: false});
+        let error = false;
 
-        if(this.state.zipCode.length === 0 && document.getElementById("adr2").disabled === false){
-            this.setState({zipcodeEmpty: true});
-        } else this.setState({zipcodeEmpty: false});
+        if(this.state.newAddress.length === 0 && document.getElementById("adr1").disabled === false){
+            this.setState({newAddressEmpty: true});
+            error = true;
+        } else this.setState({newAddressEmpty: false});
 
-        if(this.state.city.length === 0 && document.getElementById("city").disabled === false){
-            this.setState({cityEmpty: true});
-        } else this.setState({cityEmpty: false});
+        if(this.state.newZipCode.length === 0 && document.getElementById("adr2").disabled === false){
+            this.setState({newZipCodeEmpty: true});
+            error = true;
+        } else this.setState({newZipCodeEmpty: false});
 
-        if(this.state.state.length === 0 && document.getElementById("state").disabled === false){
-            this.setState({stateEmpty: true});
-        } else this.setState({stateEmpty: false});
+        if(this.state.newCity.length === 0 && document.getElementById("city").disabled === false){
+            this.setState({newCityEmpty: true});
+            error = true;
+        } else this.setState({newCityEmpty: false});
+
+        if(this.state.newState.length === 0 && document.getElementById("state").disabled === false){
+            this.setState({newStateEmpty: true});
+            error = true;
+        } else this.setState({newStateEmpty: false});
 
         if(this.state.details.length === 0){
             this.setState({detailsEmpty: true});
+            error = true;
         } else this.setState({detailsEmpty: false});
 
         if(this.state.facility.length === 0){
             this.setState({facilityEmpty: true});
+            error = true;
         } else this.setState({facilityEmpty: false});
+
+        if(error === false){
+            if(this.state.newAddress.length != 0){
+                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
+                    address: this.state.newAddress,
+                    address_l2: this.state.newAddress_l2,
+                    zipCode: this.state.newZipCode,
+                    city: this.state.newCity,
+                    state: this.state.newState,
+                    facility: this.state.facility,
+                    details: this.state.details
+                }).then(function (response) {
+                    console.log(response);
+                });
+            } else {
+                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
+                    "address": this.props.address,
+                    "address_l2": this.props.newAddress_l2,
+                    "zipCode": this.props.newZipCode,
+                    "city": this.props.newCity,
+                    "state": this.props.newState,
+                    "facility": this.state.facility,
+                    "details": this.state.details
+                }).then(function (response) {
+                    console.log(response);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            }
+        }
     }
 
 }

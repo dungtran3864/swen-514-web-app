@@ -7,7 +7,8 @@ import Styles from "./Styles";
 import React from 'react';
 import Colors from "./Colors";
 import {Component} from "react";
-import axios from "axios";
+
+const axios = require('axios')
 
 const StyledAccount = styled(CenteredColumn)`
   ${Styles.pageSetup};
@@ -28,7 +29,6 @@ const StyledAccount = styled(CenteredColumn)`
   }
   
 `
-
 class CreateAccount extends Component {
 
     constructor(props) {
@@ -47,6 +47,7 @@ class CreateAccount extends Component {
 
     render() {
         return (
+
             <StyledAccount>
                 <header className="CreateAccount">
                     <h1>Create Account</h1>
@@ -56,12 +57,13 @@ class CreateAccount extends Component {
 
                     <div className="Form-Component">
                         {this.state.emailEmpty && <label className="error-msg">Email field is empty</label>}
+                        {this.state.invalidEmail && <label className="error-msg">Email already exists.</label>}
                         <InputLabel htmlFor="email">Email:</InputLabel>
                         <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)}/><br/><br/>
                     </div>
 
-                    {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
                     <div className="Form-Component">
+                        {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
                         <InputLabel htmlFor="password">Password:</InputLabel>
                         <Input type="password" id="password" name="password"
                                onChange={evt => this.updatePassword(evt)}/><br/><br/>
@@ -101,6 +103,7 @@ class CreateAccount extends Component {
 
                     <button className="validate-button" onClick={() => this.createAccount()}>Verify</button>
                     <br/><br/>
+
                     <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
 
                 </div>
@@ -139,10 +142,6 @@ class CreateAccount extends Component {
         this.setState({state: evt.target.value});
     }
 
-    saveData() {
-
-    }
-
     createAccount() {
 
         let error = false;
@@ -178,16 +177,24 @@ class CreateAccount extends Component {
         } else this.setState({stateEmpty: false});
 
         if (error === false) {
-            axios.post('/blizzard-database.cbxhylxbhyt6.us-east-1.rds.amazonaws.com', {
-                email: this.state.email,
-                password: this.state.password,
-                address: this.state.address,
-                address_l2: this.state.address_l2,
-                zipCode: this.state.zipCode,
-                city: this.state.city,
-                state: this.state.state
-            }).then(function (response) {
+
+            axios.post("https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/sign-up",
+                {
+                    "email": this.state.email,
+                    "password": this.state.password,
+                    "address": this.state.address,
+                    "address_l2": this.state.address_l2,
+                    "zipCode": this.state.zipCode,
+                    "city": this.state.city,
+                    "state": this.state.state
+                }
+            ).then(function (response) {
                 console.log(response);
+                if(response.status === 403) {
+                    this.setState({invalidEmail: true});
+                }
+            }).catch(function (error) {
+                console.log(error);
             });
 
         }

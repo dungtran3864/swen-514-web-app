@@ -51,11 +51,6 @@ class SignIn extends Component{
         this.state = {
             email: "",
             password: "",
-            address: "",
-            address_l2: "",
-            zipCode: "",
-            city: "",
-            state: ""
         }
     }
 
@@ -86,6 +81,9 @@ class SignIn extends Component{
             </StyledSignIn>
         );
     }
+
+
+
 }
 
 export default SignIn;

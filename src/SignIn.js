@@ -10,77 +10,58 @@ import Colors from "./Colors";
 const StyledSignIn = styled(CenteredColumn)`
   ${Styles.pageSetup};
   ${Styles.centeredColumn};
-  
+
   header{
     ${Styles.header};
   }
-  
-  #email{
-    ${Styles.label};
-  }
-  
-  #password{
-    ${Styles.input};
-  }
-  
-  #emailLabel{
-    ${Styles.label};
+
+  button{
+    ${Styles.darkOutline};
+    background-color: ${Colors.green2};
+    ${Styles.smallShadow};
+    cursor: pointer;
   }
 
-  #passwordLabel{
-    ${Styles.input};
+  hr{
+    ${Styles.hr};
   }
-
-  #buttons{
-    padding: 12px;
-    ${Styles.centeredRow};
-  }
-  
-  #or{
-    margin: 8px;
-    align: center;
-  }
-  
 ` ;
 
 const axios = require('axios').default;
 
 class SignIn extends Component{
 
-    axiosPost(email, password){
-        axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
-            "email": "email",
-            "password": "password"
-        }).then(function (response){
-            console.log(response);
-        }).catch(function(error){
-            console.log(error);
-        });
-    }
-
     constructor(props) {
         super(props);
         console.log(this.props)
         this.state = {
             email: "",
-            password: "",
+            password: ""
         }
     }
 
     render() {
         return (
             <StyledSignIn>
+                <head>
+                    <title>WSCS - Sign In</title>
+                </head>
                 <header className="Account-Header">
                     <h1>Sign In</h1>
                 </header>
                 <body>
                 <div className="Form">
                     <div id="login">
-                        <InputLabel htmlFor="email" id="emailLabel">Email:</InputLabel>
-                        <Input type="text" id="email" name="email"/>
-                        <InputLabel htmlFor="password" id="passwordLabel">Password:</InputLabel>
-                        <Input type="password" id="password" name="password"/><br/>
-                        <button id="validate">Validate</button>
+                        {this.state.invalidEmail && <label className="error-msg">Email not found.</label>}
+                        <InputLabel htmlFor="email">Email:</InputLabel>
+                        <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)} /> {/* todo : update the states on input */}
+
+                        {this.state.invalidPassword && <label className="error-msg">Password is incorrect.</label>}
+                        <InputLabel htmlFor="password">Password:</InputLabel>
+                        <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/>
+
+                        <button id="validate-button" onClick={() => this.axiosPost()}>Validate</button><br />
+                        <p id = "t3st"></p>
                     </div>
 
                     <div id="buttons">
@@ -90,12 +71,49 @@ class SignIn extends Component{
                     </div>
                 </div>
                 <hr />
-                <Button to={"/"} label={"Back"}/>
+                <Button to={"/"} label={"Exit Site"}/>
                 </body>
             </StyledSignIn>
         );
     }
-}
 
+    updateEmail(evt) {
+        this.setState({email: evt.target.value});
+    }
+
+    updatePassword(evt) {
+        this.setState({password: evt.target.value});
+    }
+
+    check(){
+        document.getElementById("validate-button").innerText = "Button";
+    }
+
+    validateStates(){
+        this.axiosPost();
+    }
+
+    axiosPost(){
+        axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
+            "email": this.state.email,
+            "password": this.state.password
+        }).then(function (response){
+            console.log(response);
+            if(response.status === 401){
+                //email does not exist: set invalidEmail to true
+                this.setState({invalidEmail: true});
+            }else if(response.status === 403){
+                //password is incorrect: set invalidEmail to true
+                this.setState({invalidPassword: true});
+            }else{
+                //everything is awesome
+                //todo: testing the method: true should be changed to false OR removed
+            }
+        }).catch(function(error){
+            console.log(error);
+        });
+    }
+
+}
 
 export default SignIn;

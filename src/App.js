@@ -22,14 +22,14 @@ const App = () => {
                 <Route path="/citizen-submit-report">
                     <CitizenReport />
                 </Route>
-                <Route path="/citizen-home" component={CitizenHome}/>
+                <Route path="/citizen-home" component={CitizenHome} />
                 <Route path="/gov-submit-report">
                     <GovernmentReport />
                 </Route>
                 <Route path="/gov-home">
                     <GovernmentHome />
                 </Route>
-                <Route path="/sign-in" component={SignIn}/>
+                <Route path="/sign-in" component={SignIn} />
                 <Route path="/create-account">
                     <CreateAccount />
                 </Route>

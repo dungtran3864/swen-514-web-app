@@ -89,16 +89,7 @@ class SignIn extends Component{
     }
 
     validateStates(){
-        let send = this.axiosPost();
-        if(send){
-            if(this.state.usertype === "Citizen"){
-                //todo send to citizen home
-                this.props.history.push("/citizen-home");
-            }else if(this.state.usertype === "Government"){
-                //todo send to gov home
-                this.props.history.push("/gov-home");
-            }
-        }
+        this.axiosPost();
     }
 
     axiosPost(){
@@ -116,12 +107,11 @@ class SignIn extends Component{
                 this.setState({invalidPassword: true});
                 return false;
             }else{
-                // console.log(response);
-                // if(response.data.usertype === "Citizen"){
-                //     this.props.history.push("/citizen-home");
-                // }
-                console.log(this.props);
-                this.props.history.push("/citizen-home");
+                if (response.data.usertype === "Citizen") {
+                    props.history.push('/citizen-home');
+                }
+                //everything is awesome
+                //todo: testing the method: true should be changed to false OR removed
             }
         }).catch(function(error){
             console.log(error);

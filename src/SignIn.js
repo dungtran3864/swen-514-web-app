@@ -48,6 +48,8 @@ class SignIn extends Component{
             invalidEmail: false,
             invalidPassword: false
         }
+
+        let that = this;
     }
 
     render() {
@@ -72,7 +74,7 @@ class SignIn extends Component{
                     </div>
 
                     <div id="buttons">
-                        <button id="validate-button" onClick={() => this.axiosPost(this.props)}>Sign In</button>
+                        <button id="validate-button" onClick={() => this.axiosPost(this.props, this)}>Sign In</button>
                         <label id="or"> -OR- </label>
                         <Button to="/create-account" label="Create Account"/>
                     </div>
@@ -96,7 +98,7 @@ class SignIn extends Component{
         document.getElementById("validate-button").innerText = "Button";
     }
 
-    axiosPost(props){
+    axiosPost = (props, that) =>{
         axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
             "email": this.state.email,
             "password": this.state.password
@@ -104,11 +106,11 @@ class SignIn extends Component{
             console.log(response);
             if(response.data.status === 401){
                 //email does not exist: set invalidEmail to true
-                this.setState({invalidEmail: true});
+                that.setState({invalidEmail: true})
                 return false;
             }else if(response.data.status === 403){
                 //password is incorrect: set invalidPassword to true
-                this.setState({invalidPassword: true});
+                that.setState({invalidPassword: true});
                 return false;
             }else{
                 if (response.data.usertype === "Citizen") {
@@ -123,7 +125,6 @@ class SignIn extends Component{
             console.log(error);
         });
     }
-
 }
 
 export default SignIn;

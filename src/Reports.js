@@ -137,7 +137,7 @@ class Reports extends Component {
                             <Button id="doneButton" to={"/citizen-home"} label={"Done"}/><br/>
                         </div>
                         <div>
-                            <Button to={"/"} label={"Exit Site"}/>
+                            <Button to={"/citizen-home"} label={"Exit Site"}/>
                         </div>
                     </body>
                 </div>

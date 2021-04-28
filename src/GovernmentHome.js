@@ -7,15 +7,6 @@ class GovernmentHome extends Component {
     constructor(props) {
         super(props);
         console.log(this.props)
-        this.state = {
-            email: "",
-            password: "",
-            address: "",
-            address_l2: "",
-            zipCode: "",
-            city: "",
-            state: ""
-        }
     }
 
     render() {
@@ -25,7 +16,9 @@ class GovernmentHome extends Component {
                     <title>WSCS - Home</title>
                 </head>
                 <header className="Account-Header">
-                    <h1>Welcome {this.state.email}</h1>
+                    <h1>
+                        <label style={{marginLeft: "20px"}}>{"Welcome " + this.props.history.email + "!"}</label>
+                    </h1>
                 </header>
                 <body>
                     <form>

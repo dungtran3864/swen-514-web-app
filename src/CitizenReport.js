@@ -273,13 +273,13 @@ class CitizenReport extends Component {
         if(error === false){
             if(this.state.newAddress.length != 0){
                 axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
-                    address: this.state.newAddress,
-                    address_l2: this.state.newAddress_l2,
-                    zipCode: this.state.newZipCode,
-                    city: this.state.newCity,
-                    state: this.state.newState,
-                    facility: this.state.facility,
-                    details: this.state.details
+                    "address": this.state.newAddress,
+                    "address_l2": this.state.newAddress_l2,
+                    "zipCode": this.state.newZipCode,
+                    "city": this.state.newCity,
+                    "state": this.state.newState,
+                    "facility": this.state.facility,
+                    "details": this.state.details
                 }).then(function (response) {
                     console.log(response);
                 });

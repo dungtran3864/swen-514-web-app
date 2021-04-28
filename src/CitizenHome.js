@@ -1,18 +1,26 @@
 import './css/Home.css';
 import Button from "./Button"
-import React from "react";
+import React, {Component} from "react";
 
-const CitizenHome = () => {
+class CitizenHome extends Component{
 
-    return (
-        <div className="CitizenHome">
-            <head>
-                <title>WSCS - Home</title>
-            </head>
-            <header className="Account-Header">
-                <h1>Welcome User</h1>
-            </header>
-            <body>
+    constructor(props) {
+        super(props);
+        console.log(this.props)
+    }
+
+    render() {
+        return (
+            <div className="CitizenHome">
+                <head>
+                    <title>WSCS - Home</title>
+                </head>
+                <header className="Account-Header">
+                    <h1>
+                        <label style={{marginLeft: "20px"}}>{"Welcome " + this.props.email + "!"}</label>
+                    </h1>
+                </header>
+                <body>
                 <form>
                     <Button to="/manage-account" label="Manage Account"/><br/><br/>
                     <Button to="/citizen-submit-report" label="Submit Issue Form"/><br/><br/>
@@ -20,9 +28,10 @@ const CitizenHome = () => {
                     <Button to="/reports-near-me" label="Reports Near Me"/><br/><br/>
                     <Button to="/" label="Sign Out"/><br/><br/>
                 </form>
-            </body>
-        </div>
-    );
+                </body>
+            </div>
+        );
+    }
 }
 
 export default CitizenHome;

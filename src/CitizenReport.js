@@ -141,7 +141,7 @@ class CitizenReport extends Component {
                         <InputLabel id={"formText"} className="state-input-label">Details:</InputLabel>
                         <Input type="text" className="details-input" onChange={evt => this.updateDetails(evt)}/><br/><br/>
 
-                        <button id={"btn"} className="validate-button" onClick={() => this.submit()}>Verify</button><br/><br/>
+                        <button id={"btn"} className="validate-button" onClick={() => this.submit(this.props)}>Verify</button><br/><br/>
 
                         </div>
 
@@ -236,7 +236,7 @@ class CitizenReport extends Component {
         this.setState({details: evt.target.value});
     }
 
-    submit(){
+    submit(props){
 
         let error = false;
 
@@ -279,19 +279,21 @@ class CitizenReport extends Component {
                     "city": this.state.newCity,
                     "state": this.state.newState,
                     "facility": this.state.facility,
-                    "details": this.state.details
+                    "details": this.state.details,
+                    "citizen_id": 1
                 }).then(function (response) {
                     console.log(response);
                 });
             } else {
                 axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
-                    "address": this.props.address,
-                    "address_l2": this.props.newAddress_l2,
-                    "zipCode": this.props.newZipCode,
-                    "city": this.props.newCity,
-                    "state": this.props.newState,
+                    "address": props.address,
+                    "address_l2": props.address,
+                    "zipCode": props.address_l2,
+                    "city": props.city,
+                    "state": props.state,
                     "facility": this.state.facility,
-                    "details": this.state.details
+                    "details": this.state.details,
+                    "citizen_id": 1
                 }).then(function (response) {
                     console.log(response);
                 }).catch(function (error) {

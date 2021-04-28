@@ -74,12 +74,6 @@
   text-align: center;
 }
 
-.Form-Component{
-  border: 3px solid orange;
-  margin: 12px;
-  pading: 8px;
-}
-
 .input-label{
   font-weight: 500;
   padding: 8px;

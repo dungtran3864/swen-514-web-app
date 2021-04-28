@@ -59,13 +59,11 @@ class SignIn extends Component{
                         {this.state.invalidPassword && <label className="error-msg">Password is incorrect.</label>}
                         <InputLabel htmlFor="password">Password:</InputLabel>
                         <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/>
-
-                        <button id="validate-button" onClick={() => this.axiosPost(this.props)}>Validate</button><br />
                     </div>
 
                     <div id="buttons">
-                        <Button to="/citizen-home" label="Submit"/><br/>
-                        <label id="or"> -OR- </label>
+                        <button id="validate-button" onClick={() => this.axiosPost(this.props)}>Sign In</button><br/>
+                        <label id="or"> -OR- </label><br/>
                         <Button to="/create-account" label="Create Account"/>
                     </div>
                 </div>
@@ -103,7 +101,7 @@ class SignIn extends Component{
                 this.setState({invalidEmail: true});
                 return false;
             }else if(response.data.status === 403){
-                //password is incorrect: set invalidEmail to true
+                //password is incorrect: set invalidPassword to true
                 this.setState({invalidPassword: true});
                 return false;
             }else{

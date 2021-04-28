@@ -101,8 +101,7 @@ class CreateAccount extends Component {
                         <Input type="text" id="state" name="state" onChange={evt => this.updateState(evt)}/><br/><br/>
                     </div>
 
-                    <button className="validate-button" onClick={() => this.createAccount()}>Verify</button>
-                    <br/><br/>
+                    <button className="validate-button" onClick={() => this.createAccount(this.props)}>Verify</button><br/><br/>
 
                     <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
 
@@ -142,9 +141,10 @@ class CreateAccount extends Component {
         this.setState({state: evt.target.value});
     }
 
-    createAccount() {
+    createAccount(props) {
 
         let error = false;
+        this.setState({invalidEmail: false})
 
         if (this.state.email.length === 0) {
             this.setState({emailEmpty: true});
@@ -190,9 +190,9 @@ class CreateAccount extends Component {
                 }
             ).then(function (response) {
                 console.log(response);
-                if(response.status === 403) {
+                if(response.data.status === 403) {
                     this.setState({invalidEmail: true});
-                }
+                } else props.history.push('/citizen-home');
             }).catch(function (error) {
                 console.log(error);
             });

@@ -1,6 +1,6 @@
 import './css/Home.css';
 import Button from "./Button"
-import {Component} from "react";
+import React, {Component} from "react";
 
 class GovernmentHome extends Component {
 
@@ -21,17 +21,19 @@ class GovernmentHome extends Component {
     render() {
         return (
             <div className="GovernmentHome">
+                <head>
+                    <title>WSCS - Home</title>
+                </head>
                 <header className="Account-Header">
                     <h1>Welcome {this.state.email}</h1>
                 </header>
                 <body>
-                <form>
-                    <Button to="/gov-manage-account" label="Manage Account"/><br/><br/>
-                    <Button to="/gov-submit-report" label="Submit Issue Form"/><br/><br/>
-                    <Button to="/gov-my-submissions" label="My Submissions"/><br/><br/>
-                    <Button to="/gov-reports-near-me" label="Reports Near Me"/><br/><br/>
-                    <Button to="/" label="Sign Out"/><br/><br/>
-                </form>
+                    <form>
+                        <Button to="/manage-account" label="Manage Account"/><br/><br/>
+                        <Button to="/gov-submit-report" label="Submit Issue Form"/><br/><br/>
+                        <Button to="/submissions" label="My Submissions"/><br/><br/>
+                        <Button to="/" label="Sign Out"/><br/><br/>
+                    </form>
                 </body>
             </div>
         );

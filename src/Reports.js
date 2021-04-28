@@ -59,8 +59,8 @@ class Reports extends Component {
                     <header>
                         <h1>My Reports</h1>
                     </header>
-                    <body className="Reports-display">
-                        <div className="Reports-div" id="reportsDiv">
+                    <body>
+                        <div className="Reports-display" id="reportsDiv">
                             {this.displayReports(this.props)}
                             <div id="report-0" className="Report-Component">
                                 <div className="Form-Component">
@@ -134,6 +134,7 @@ class Reports extends Component {
                                     <label id="report3-details">#</label>
                                 </div>
                             </div>
+                            <Button id="doneButton" to={"/citizen-home"} label={"Done"}/><br/>
                         </div>
                         <div>
                             <Button to={"/"} label={"Exit Site"}/>

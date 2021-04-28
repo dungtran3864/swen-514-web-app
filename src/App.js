@@ -19,29 +19,15 @@ const App = () => {
     return(
         <Router>
             <Switch>
-                <Route path="/citizen-submit-report">
-                    <CitizenReport />
-                </Route>
-                <Route path="/citizen-home" component={CitizenHome} />
-                <Route path="/gov-submit-report">
-                    <GovernmentReport />
-                </Route>
-                <Route path="/gov-home">
-                    <GovernmentHome />
-                </Route>
-                <Route path="/sign-in" component={SignIn} />
-                <Route path="/create-account">
-                    <CreateAccount />
-                </Route>
-                <Route path="/submissions">
-                    <Reports />
-                </Route>
-                <Route path="/manage-account">
-                    <ManageAccount />
-                </Route>
-                <Route path="/">
-                    <Landing />
-                </Route>
+                <Route path="/citizen-submit-report" component={CitizenReport}/>
+                    <Route path="/citizen-home" component={CitizenHome} />
+                    <Route path="/gov-submit-report" component={GovernmentReport}/>
+                    <Route path="/gov-home" component={GovernmentHome}/>
+                    <Route path="/sign-in" component={SignIn} />
+                    <Route path="/create-account" component={CreateAccount}/>
+                    <Route path="/submissions" component={Reports }/>
+                    <Route path="/manage-account" component={ManageAccount} />
+                    <Route path="/" component={Landing}/>
             </Switch>
         </Router>
     );

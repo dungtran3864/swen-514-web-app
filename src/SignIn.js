@@ -113,6 +113,8 @@ class SignIn extends Component{
             }else{
                 if (response.data.usertype === "Citizen") {
                     props.history.push('/citizen-home');
+                }else if(response.data.usertype === "Government"){
+                    props.history.push('/gov-home');
                 }
                 //everything is awesome
                 //todo: testing the method: true should be changed to false OR removed

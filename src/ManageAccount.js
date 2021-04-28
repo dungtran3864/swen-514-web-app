@@ -63,7 +63,7 @@ class ManageAccount extends Component{
                     {this.state.emailEmpty && <label className="error-msg">Email field is empty</label>}
 
                     <InputLabel htmlFor="email">Email:</InputLabel>
-                    <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)}/><br/>
+                    <Input type="text" id="email" name="email" defaultValue={this.state.email} onChange={evt => this.updateEmail(evt)}/><br/>
                     {/* todo: add default attribute as current email */}
 
                     {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}

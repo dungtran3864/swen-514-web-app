@@ -17,6 +17,7 @@ const StyledLink = styled(Link)`
     margin: 12px;
   
     font-weight: bold;
+    font-size: 15px;
 `;
 
 const Button = ({ to, label }) => (

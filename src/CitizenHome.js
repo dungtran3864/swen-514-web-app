@@ -17,7 +17,7 @@ class CitizenHome extends Component{
                 </head>
                 <header className="Account-Header">
                     <h1>
-                        <label style={{marginLeft: "20px"}}>{"Welcome " + this.props.email + "!"}</label>
+                        <label style={{marginLeft: "20px"}}>{"Welcome " + this.props.history.email + "!"}</label>
                     </h1>
                 </header>
                 <body>

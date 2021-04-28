@@ -16,10 +16,18 @@ const StyledSignIn = styled(CenteredColumn)`
   }
 
   button{
-    ${Styles.darkOutline};
-    background-color: ${Colors.green2};
-    ${Styles.smallShadow};
+    ${Styles.centeredRow}
+    ${Styles.darkOutline}
+    ${Styles.smallShadow}
+
+    display: inline-flex;
+    align-items: center;
     cursor: pointer;
+    background-color: ${Colors.green2};
+    margin: 12px;
+
+    font-weight: bold;
+    font-size: 15px;
   }
 
   hr{
@@ -36,7 +44,9 @@ class SignIn extends Component{
         console.log(this.props)
         this.state = {
             email: "",
-            password: ""
+            password: "",
+            invalidEmail: false,
+            invalidPassword: false
         }
     }
 
@@ -54,16 +64,16 @@ class SignIn extends Component{
                     <div id="login">
                         {this.state.invalidEmail && <label className="error-msg">Email not found.</label>}
                         <InputLabel htmlFor="email">Email:</InputLabel>
-                        <Input type="text" id="email" name="email" onChange={evt => this.updateEmail(evt)} /> {/* todo : update the states on input */}
+                        <Input type="text" id="email" name="email" className="Form-Component" onChange={evt => this.updateEmail(evt)} /> {/* todo : update the states on input */}
 
                         {this.state.invalidPassword && <label className="error-msg">Password is incorrect.</label>}
                         <InputLabel htmlFor="password">Password:</InputLabel>
-                        <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/>
+                        <Input type="password" id="password" name="password" className="Form-Component" onChange={evt => this.updatePassword(evt)}/><br/>
                     </div>
 
                     <div id="buttons">
-                        <button id="validate-button" onClick={() => this.axiosPost(this.props)}>Sign In</button><br/>
-                        <label id="or"> -OR- </label><br/>
+                        <button id="validate-button" onClick={() => this.axiosPost(this.props)}>Sign In</button>
+                        <label id="or"> -OR- </label>
                         <Button to="/create-account" label="Create Account"/>
                     </div>
                 </div>

@@ -86,10 +86,6 @@ class SignIn extends Component{
         document.getElementById("validate-button").innerText = "Button";
     }
 
-    validateStates(){
-        this.axiosPost();
-    }
-
     axiosPost(props){
         axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
             "email": this.state.email,

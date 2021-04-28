@@ -50,7 +50,7 @@
   text-align: center;
 }
 
-.Reports{
+.Report-page{
   text-align: center;
 }
 
@@ -74,8 +74,29 @@
   text-align: center;
 }
 
+.Form-Component{
+  margin: 12px;
+  padding: 8px;
+}
+
+.Report-Component{
+  margin: 12px;
+  padding: 8px;
+  border: 2px solid #8A9B68;
+  border-radius: 8px;
+}
+
 .input-label{
   font-weight: 500;
   padding: 8px;
   display: block;
+}
+
+.Reports-display{
+
+  padding: 40px;
+  border-radius: 8px;
+  background-color: #B6C197;
+  border: 2px solid #8A9B68;
+  text-align: center;
 }

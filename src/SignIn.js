@@ -99,6 +99,9 @@ class SignIn extends Component{
     }
 
     axiosPost = (props, that) =>{
+        that.setState({invalidEmail: false})
+        that.setState({invalidPassword: false})
+
         axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
             "email": this.state.email,
             "password": this.state.password

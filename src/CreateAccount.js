@@ -43,6 +43,8 @@ class CreateAccount extends Component {
             city: "",
             state: ""
         }
+
+        let that = this;
     }
 
     render() {
@@ -101,7 +103,7 @@ class CreateAccount extends Component {
                         <Input type="text" id="state" name="state" onChange={evt => this.updateState(evt)}/><br/><br/>
                     </div>
 
-                    <button className="validate-button" onClick={() => this.createAccount(this.props)}>Verify</button><br/><br/>
+                    <button className="validate-button" onClick={() => this.createAccount(this.props, this)}>Verify</button><br/><br/>
 
                     <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
 
@@ -141,7 +143,7 @@ class CreateAccount extends Component {
         this.setState({state: evt.target.value});
     }
 
-    createAccount(props) {
+    createAccount(props, that) {
 
         let error = false;
         this.setState({invalidEmail: false})
@@ -190,8 +192,8 @@ class CreateAccount extends Component {
                 }
             ).then(function (response) {
                 console.log(response);
-                if(response.data.status === 403) {
-                    this.setState({invalidEmail: true});
+                if(response.data.status === 403) { //if email is already in use
+                    that.setState({invalidEmail: true})
                 } else props.history.push('/citizen-home');
             }).catch(function (error) {
                 console.log(error);

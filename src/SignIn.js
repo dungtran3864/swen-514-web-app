@@ -61,7 +61,6 @@ class SignIn extends Component{
                         <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/>
 
                         <button id="validate-button" onClick={() => this.axiosPost()}>Validate</button><br />
-                        <p id = "t3st"></p>
                     </div>
 
                     <div id="buttons">
@@ -90,7 +89,16 @@ class SignIn extends Component{
     }
 
     validateStates(){
-        this.axiosPost();
+        let send = this.axiosPost();
+        if(send){
+            if(this.state.usertype === "Citizen"){
+                //todo send to citizen home
+                this.props.history.push("/citizen-home");
+            }else if(this.state.usertype === "Government"){
+                //todo send to gov home
+                this.props.history.push("/gov-home");
+            }
+        }
     }
 
     axiosPost(){
@@ -99,15 +107,21 @@ class SignIn extends Component{
             "password": this.state.password
         }).then(function (response){
             console.log(response);
-            if(response.status === 401){
+            if(response.data.status === 401){
                 //email does not exist: set invalidEmail to true
                 this.setState({invalidEmail: true});
-            }else if(response.status === 403){
+                return false;
+            }else if(response.data.status === 403){
                 //password is incorrect: set invalidEmail to true
                 this.setState({invalidPassword: true});
+                return false;
             }else{
-                //everything is awesome
-                //todo: testing the method: true should be changed to false OR removed
+                // console.log(response);
+                // if(response.data.usertype === "Citizen"){
+                //     this.props.history.push("/citizen-home");
+                // }
+                console.log(this.props);
+                this.props.history.push("/citizen-home");
             }
         }).catch(function(error){
             console.log(error);

@@ -103,9 +103,7 @@ class CreateAccount extends Component {
                         <Input type="text" id="state" name="state" onChange={evt => this.updateState(evt)}/><br/><br/>
                     </div>
 
-                    <button className="validate-button" onClick={() => this.createAccount(this.props, this)}>Verify</button><br/><br/>
-
-                    <Button to={"/citizen-home"} label={"Create Account"}/><br/><br/>
+                    <button className="submit-button" onClick={() => this.createAccount(this.props, this)}>Create Account</button><br/><br/>
 
                 </div>
                 <hr/>
@@ -145,6 +143,7 @@ class CreateAccount extends Component {
 
     createAccount(props, that) {
 
+        this.setState({invalidEmail: false})
         let error = false;
         this.setState({invalidEmail: false})
 

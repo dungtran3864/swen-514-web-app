@@ -42,13 +42,13 @@ class ManageAccount extends Component{
         super(props);
         console.log(this.props)
         this.state = {
-            email: "",
+            email: "example@email.com",
             password: "",
-            address: "",
+            address: "123 Example",
             address_l2: "",
-            zipCode: "",
-            city: "",
-            state: ""
+            zipCode: "123456",
+            city: "Rochester",
+            state: "NY"
         }
     }
 
@@ -67,32 +67,32 @@ class ManageAccount extends Component{
                     {/* todo: add default attribute as current email */}
 
                     {this.state.passwordEmpty && <label className="error-msg">Password field is empty</label>}
-                    <InputLabel htmlFor="password">Password:</InputLabel>
+                    <InputLabel htmlFor="password" >Password:</InputLabel>
                     <Input type="password" id="input" name="password" onChange={evt => this.updatePassword(evt)}/><br/>
                     {/* todo: add default attribute as current password */}
 
                     {this.state.addressEmpty && <label className="error-msg">Address field is empty</label>}
                     <InputLabel htmlFor="address">Address:</InputLabel>
-                    <Input type="text" id="adrl1" name="addressLine1" onChange={evt => this.updateAddressLine1(evt)}/><br/>
+                    <Input type="text" id="adrl1" name="addressLine1" defaultValue={this.state.address} onChange={evt => this.updateAddressLine1(evt)}/><br/>
                     {/* todo: add default attribute as current addressLine1 */}
 
                     <InputLabel htmlFor="address">Address L2 (optional):</InputLabel>
-                    <Input type="text" id="adrl2" name="addressLine2" onChange={evt => this.updateAddressLine2(evt)}/><br/>
+                    <Input type="text" id="adrl2" name="addressLine2" defaultValue={this.state.address_l2} onChange={evt => this.updateAddressLine2(evt)}/><br/>
                     {/* todo: add default attribute as current addressLine2 */}
 
                     {this.state.zipCodeEmpty && <label className="error-msg">Zipcode field is empty</label>}
                     <InputLabel htmlFor="zipCode">Zip Code:</InputLabel>
-                    <Input type="text" id="zipCode" name="zipCode" onChange={evt => this.updateZipcode(evt)}/><br/>
+                    <Input type="text" id="zipCode" name="zipCode" defaultValue={this.state.zipCode} onChange={evt => this.updateZipcode(evt)}/><br/>
                     {/* todo: add default attribute as current zipcode */}
 
                     {this.state.cityEmpty && <label className="error-msg">City field is empty</label>}
                     <InputLabel htmlFor="city">City:</InputLabel>
-                    <Input type="text" id="city" name="city" onChange={evt => this.updateCity(evt)}/><br/>
+                    <Input type="text" id="city" name="city" defaultValue={this.state.city} onChange={evt => this.updateCity(evt)}/><br/>
                     {/* todo: add default attribute as current city */}
 
                     {this.state.stateEmpty && <label className="error-msg">State field is empty</label>}
                     <InputLabel htmlFor="state">State:</InputLabel>
-                    <Input type="text" id="state" name="state" onChange={evt => this.updateState(evt)}/><br/><br/>
+                    <Input type="text" id="state" name="state" defaultValue={this.state.state} onChange={evt => this.updateState(evt)}/><br/><br/>
                     {/* todo: add default attribute as current state */}
 
                     <button className="validate-button" onClick={() => this.makeChanges()}>Apply Changes</button><br/>

@@ -141,7 +141,7 @@ class CitizenReport extends Component {
                         <InputLabel id={"formText"} className="state-input-label">Details:</InputLabel>
                         <Input type="text" className="details-input" onChange={evt => this.updateDetails(evt)}/><br/><br/>
 
-                        <button id={"btn"} className="validate-button" onClick={() => this.submit(this.props)}>Verify</button><br/><br/>
+                        <button id={"btn"} className="submit-button" onClick={() => this.submit(this.props)}>Verify</button><br/><br/>
 
                         </div>
 
@@ -296,6 +296,7 @@ class CitizenReport extends Component {
                     "citizen_id": 1
                 }).then(function (response) {
                     console.log(response);
+                    props.history.push('/citizen-home');
                 }).catch(function (error) {
                     console.log(error);
                 });

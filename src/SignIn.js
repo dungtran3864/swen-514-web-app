@@ -60,7 +60,7 @@ class SignIn extends Component{
                         <InputLabel htmlFor="password">Password:</InputLabel>
                         <Input type="password" id="password" name="password" onChange={evt => this.updatePassword(evt)}/><br/>
 
-                        <button id="validate-button" onClick={() => this.axiosPost()}>Validate</button><br />
+                        <button id="validate-button" onClick={() => this.axiosPost(this.props)}>Validate</button><br />
                     </div>
 
                     <div id="buttons">
@@ -92,7 +92,7 @@ class SignIn extends Component{
         this.axiosPost();
     }
 
-    axiosPost(){
+    axiosPost(props){
         axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
             "email": this.state.email,
             "password": this.state.password

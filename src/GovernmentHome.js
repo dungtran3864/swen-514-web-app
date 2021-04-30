@@ -6,7 +6,6 @@ class GovernmentHome extends Component {
 
     constructor(props) {
         super(props);
-        console.log(this.props)
     }
 
     render() {
@@ -17,7 +16,7 @@ class GovernmentHome extends Component {
                 </head>
                 <header className="Account-Header">
                     <h1>
-                        <label style={{marginLeft: "20px"}}>{"Welcome " + this.props.history.email + "!"}</label>
+                        <label style={{marginLeft: "20px"}}>{"Welcome Government"}</label>
                     </h1>
                 </header>
                 <body>

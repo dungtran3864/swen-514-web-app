@@ -117,7 +117,7 @@ class SignIn extends Component{
                 return false;
             }else{
                 if (response.data.usertype === "Citizen") {
-                    props.history.push('/citizen-home');
+                    props.history.push('/citizen-home/' + response.data.user_id);
                 }else if(response.data.usertype === "Government"){
                     props.history.push('/gov-home');
                 }

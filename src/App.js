@@ -19,13 +19,13 @@ const App = () => {
     return(
         <Router>
             <Switch>
-                <Route path="/citizen-submit-report" component={CitizenReport}/>
-                    <Route path="/citizen-home" component={CitizenHome} />
+                <Route path="/citizen-submit-report/:id" component={CitizenReport}/>
+                    <Route path="/citizen-home/:id" component={CitizenHome} />
                     <Route path="/gov-submit-report" component={GovernmentReport}/>
                     <Route path="/gov-home" component={GovernmentHome}/>
                     <Route path="/sign-in" component={SignIn} />
                     <Route path="/create-account" component={CreateAccount}/>
-                    <Route path="/submissions" component={Reports }/>
+                    <Route path="/submissions/:id" component={Reports }/>
                     <Route path="/manage-account" component={ManageAccount} />
                     <Route path="/" component={Landing}/>
             </Switch>

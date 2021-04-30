@@ -271,6 +271,7 @@ class CitizenReport extends Component {
         } else this.setState({facilityEmpty: false});
 
         if(error === false){
+            const citizenId = this.props.match.params.id;
             if(this.state.newAddress.length != 0){
                 axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
                     "address": this.state.newAddress,
@@ -280,7 +281,7 @@ class CitizenReport extends Component {
                     "state": this.state.newState,
                     "facility": this.state.facility,
                     "details": this.state.details,
-                    "citizen_id": 1
+                    "citizen_id": parseInt(citizenId),
                 }).then(function (response) {
                     console.log(response);
                 });
@@ -293,7 +294,7 @@ class CitizenReport extends Component {
                     "state": props.state,
                     "facility": this.state.facility,
                     "details": this.state.details,
-                    "citizen_id": 1
+                    "citizen_id": parseInt(citizenId),
                 }).then(function (response) {
                     console.log(response);
                     props.history.push('/citizen-home');

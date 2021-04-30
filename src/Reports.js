@@ -146,9 +146,9 @@ class Reports extends Component {
     }
 
     displayReports(props){
-        axios.get("https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/reports?citizen_id=1", {
-            "citizen_id" : this.state.citizen_id
-        }).then(function (response) {
+        const citizenId = this.props.match.params.id;
+        axios.get("https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/reports?citizen_id=" + citizenId)
+            .then(function (response) {
             console.log(response);
             document.getElementById('report0-id').innerHTML = response.data.reports[0].id;
             document.getElementById('report0-zip').innerHTML = response.data.reports[0].zipCode;

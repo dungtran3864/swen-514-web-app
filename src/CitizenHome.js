@@ -3,13 +3,12 @@ import Button from "./Button"
 import React, {Component} from "react";
 
 class CitizenHome extends Component{
-
     constructor(props) {
         super(props);
-        console.log(this.props)
     }
 
     render() {
+        const citizenId = this.props.match.params.id;
         return (
             <div className="CitizenHome">
                 <head>
@@ -17,14 +16,14 @@ class CitizenHome extends Component{
                 </head>
                 <header className="Account-Header">
                     <h1>
-                        <label style={{marginLeft: "20px"}}>{"Welcome " + this.props.history.email + "!"}</label>
+                        <label style={{marginLeft: "20px"}}>{"Welcome Citizen"}</label>
                     </h1>
                 </header>
                 <body>
                 <form>
                     <Button to="/manage-account" label="Manage Account"/><br/><br/>
-                    <Button to="/citizen-submit-report" label="Submit Issue Form"/><br/><br/>
-                    <Button to="/submissions" label="Submissions"/><br/><br/>
+                    <Button to={"/citizen-submit-report/" + citizenId}  label="Submit Issue Form"/><br/><br/>
+                    <Button to={"/submissions/" + citizenId} label="Submissions"/><br/><br/>
                     <Button to="/" label="Sign Out"/><br/><br/>
                 </form>
                 </body>

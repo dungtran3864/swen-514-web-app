@@ -40,19 +40,10 @@ class Reports extends Component {
     constructor(props) {
         super(props);
         console.log(this.props)
-        this.state = {
-            newAddress: "",
-            newAddress_l2: "",
-            newZipCode: "",
-            newCity: "",
-            newState: "",
-            facility: "",
-            details: "",
-            citizen_id:""
-        }
     }
 
     render(){
+        const citizenId = this.props.match.params.id;
         return (
             <StyledReports>
                 <div className="Report-page">
@@ -134,7 +125,7 @@ class Reports extends Component {
                                     <label id="report3-details">#</label>
                                 </div>
                             </div>
-                            <Button id="doneButton" to={"/citizen-home"} label={"Done"}/><br/>
+                            <Button id="doneButton" to={"/citizen-home/" + citizenId} label={"Done"}/><br/>
                         </div>
                         <div>
                             <Button to={"/citizen-home"} label={"Exit Site"}/>

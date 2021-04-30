@@ -21,7 +21,6 @@ class CitizenHome extends Component{
                 </header>
                 <body>
                 <form>
-                    <Button to="/manage-account" label="Manage Account"/><br/><br/>
                     <Button to={"/citizen-submit-report/" + citizenId}  label="Submit Issue Form"/><br/><br/>
                     <Button to={"/reports/" + citizenId} label="Submissions"/><br/><br/>
                     <Button to="/" label="Sign Out"/><br/><br/>

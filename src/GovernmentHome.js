@@ -9,6 +9,7 @@ class GovernmentHome extends Component {
     }
 
     render() {
+        const citizenId = this.props.match.params.id;
         return (
             <div className="GovernmentHome">
                 <head>
@@ -21,9 +22,8 @@ class GovernmentHome extends Component {
                 </header>
                 <body>
                     <form>
-                        <Button to="/manage-account" label="Manage Account"/><br/><br/>
-                        <Button to="/gov-submit-report" label="Submit Issue Form"/><br/><br/>
-                        <Button to="/submissions" label="My Submissions"/><br/><br/>
+                        <Button to={"/gov-submit-report/" + citizenId}  label="View Reports"/><br/><br/>
+                        <Button to={"/reports/" + citizenId} label="Reports"/><br/><br/>
                         <Button to="/" label="Sign Out"/><br/><br/>
                     </form>
                 </body>

@@ -25,7 +25,7 @@ const App = () => {
                     <Route path="/gov-home" component={GovernmentHome}/>
                     <Route path="/sign-in" component={SignIn} />
                     <Route path="/create-account" component={CreateAccount}/>
-                    <Route path="/submissions/:id" component={Reports }/>
+                    <Route path="/reports/:id" component={Reports }/>
                     <Route path="/manage-account" component={ManageAccount} />
                     <Route path="/" component={Landing}/>
             </Switch>

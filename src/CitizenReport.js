@@ -72,10 +72,6 @@ const StyledReport = styled(CenteredColumn)`
     //outline: 3px solid pink;
   }
   
-  .submit-button {
-    font-weight: bold;
-  }
-  
 `;
 
 class CitizenReport extends Component {
@@ -84,6 +80,15 @@ class CitizenReport extends Component {
         super(props);
         console.log(this.props)
         this.state = {
+
+            //default address
+            address: "123 Example Street",
+            address_l2: "Apt 1A",
+            zipCode: "123456",
+            city: "Rochester",
+            state: "NY",
+
+            //newly input address
             newAddress: "",
             newAddress_l2: "",
             newZipCode: "",
@@ -91,18 +96,8 @@ class CitizenReport extends Component {
             newState: "",
             facility: "",
             details: "",
-            citizen_id:"",
-            disabled: true,
-            user: {},
+            citizen_id:""
         }
-    }
-
-    componentDidMount() {
-        const citizenId = this.props.match.params.id;
-        axios.get('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/user?citizen_id=' + parseInt(citizenId))
-            .then(response => {
-            this.setState({user: response.data.user});
-        }).catch(error => console.log(error))
     }
 
     render() {
@@ -166,7 +161,6 @@ class CitizenReport extends Component {
     }
 
     setOtherLocationDisable(){
-        this.setState({disabled: true});
         if(document.getElementById("adr1").disabled === false){
             document.getElementById("adr1").disabled = true;
         }
@@ -190,7 +184,7 @@ class CitizenReport extends Component {
     }
 
     setOtherLocationEnable(){
-        this.setState({disabled: false});
+
         if(document.getElementById("adr1").disabled === true){
             document.getElementById("adr1").disabled = false;
         }
@@ -285,25 +279,7 @@ class CitizenReport extends Component {
         } else this.setState({facilityEmpty: false});
 
         if(error === false){
-            const citizenId = props.match.params.id;
-            if(this.state.disabled){
-                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
-                    "address": this.state.user.address,
-                    "address_l2": this.state.user.address_l2,
-                    "zipCode": this.state.user.zipCode.toString(),
-                    "city": this.state.user.city,
-                    "state": this.state.user.state,
-                    "facility": this.state.facility,
-                    "details": this.state.details,
-                    "citizen_id": parseInt(this.state.user.id),
-                }).then(function (response) {
-                    console.log(response);
-                    props.history.push('/citizen-home/' + citizenId);
-                }).catch(function (error) {
-                    console.log(error);
-                });
-            } else {
-                console.log('haayy')
+            if(this.state.newAddress.length != 0){
                 axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
                     "address": this.state.newAddress,
                     "address_l2": this.state.newAddress_l2,
@@ -312,10 +288,24 @@ class CitizenReport extends Component {
                     "state": this.state.newState,
                     "facility": this.state.facility,
                     "details": this.state.details,
-                    "citizen_id": parseInt(this.state.user.id),
+                    "citizen_id": 1
                 }).then(function (response) {
                     console.log(response);
-                    props.history.push('/citizen-home/' + citizenId);
+                    props.history.push('/citizen-home/:id');
+                });
+            } else {
+                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
+                    "address": this.state.address,
+                    "address_l2": this.state.address_l2,
+                    "zipCode": this.state.zipCode,
+                    "city": this.state.city,
+                    "state": this.state.state,
+                    "facility": this.state.facility,
+                    "details": this.state.details,
+                    "citizen_id": 1
+                }).then(function (response) {
+                    console.log(response);
+                    props.history.push('/citizen-home/:id');
                 }).catch(function (error) {
                     console.log(error);
                 });

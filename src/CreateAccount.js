@@ -178,6 +178,7 @@ class CreateAccount extends Component {
         } else this.setState({stateEmpty: false});
 
         if (error === false) {
+            const citizenId = props.match.params.id;
 
             axios.post("https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/sign-up",
                 {
@@ -193,7 +194,7 @@ class CreateAccount extends Component {
                 console.log(response);
                 if(response.data.status === 403) { //if email is already in use
                     that.setState({invalidEmail: true})
-                } else props.history.push('/citizen-home');
+                } else props.history.push('/citizen-home/' + citizenId);
             }).catch(function (error) {
                 console.log(error);
             });

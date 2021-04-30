@@ -96,7 +96,7 @@ class CitizenReport extends Component {
             newState: "",
             facility: "",
             details: "",
-            citizen_id:""
+            citizen_id: ""
         }
     }
 
@@ -245,6 +245,12 @@ class CitizenReport extends Component {
     }
 
     submit(props){
+        const address = this.props.match.params.address;
+        const address_l2 = this.props.match.params.address_l2;
+        const zipCode = this.props.match.params.zipCode;
+        const city = this.props.match.params.city;
+        const state = this.props.match.params.state;
+        const citizenId = this.props.match.params.id;
 
         let error = false;
 
@@ -288,24 +294,24 @@ class CitizenReport extends Component {
                     "state": this.state.newState,
                     "facility": this.state.facility,
                     "details": this.state.details,
-                    "citizen_id": 1
+                    "citizen_id": citizenId
                 }).then(function (response) {
                     console.log(response);
-                    props.history.push('/citizen-home/:id');
+                    props.history.push('/citizen-submit-report/' + citizenId);
                 });
             } else {
                 axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
-                    "address": this.state.address,
-                    "address_l2": this.state.address_l2,
-                    "zipCode": this.state.zipCode,
-                    "city": this.state.city,
-                    "state": this.state.state,
+                    "address": address,
+                    "address_l2": address_l2,
+                    "zipCode": zipCode,
+                    "city": city,
+                    "state": state,
                     "facility": this.state.facility,
                     "details": this.state.details,
-                    "citizen_id": 1
+                    "citizen_id": citizenId
                 }).then(function (response) {
                     console.log(response);
-                    props.history.push('/citizen-home/:id');
+                    props.history.push('/citizen-submit-report/' + citizenId);
                 }).catch(function (error) {
                     console.log(error);
                 });

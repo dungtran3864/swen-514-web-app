@@ -72,6 +72,10 @@ const StyledReport = styled(CenteredColumn)`
     //outline: 3px solid pink;
   }
   
+  .submit-button {
+    font-weight: bold;
+  }
+  
 `;
 
 class CitizenReport extends Component {
@@ -87,8 +91,18 @@ class CitizenReport extends Component {
             newState: "",
             facility: "",
             details: "",
-            citizen_id:""
+            citizen_id:"",
+            disabled: true,
+            user: {},
         }
+    }
+
+    componentDidMount() {
+        const citizenId = this.props.match.params.id;
+        axios.get('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/user?citizen_id=' + parseInt(citizenId))
+            .then(response => {
+            this.setState({user: response.data.user});
+        }).catch(error => console.log(error))
     }
 
     render() {
@@ -141,11 +155,10 @@ class CitizenReport extends Component {
                         <InputLabel id={"formText"} className="state-input-label">Details:</InputLabel>
                         <Input type="text" className="details-input" onChange={evt => this.updateDetails(evt)}/><br/><br/>
 
-                        <button id={"btn"} className="submit-button" onClick={() => this.submit(this.props)}>Verify</button><br/><br/>
+                        <button id={"btn"} className="submit-button" onClick={() => this.submit(this.props)}>Submit</button><br/><br/>
 
                         </div>
 
-                    <Button id={"submit"} label="Submit" to="/citizen-home"/>
                     </body>
                 </div>
             </StyledReport>
@@ -153,6 +166,7 @@ class CitizenReport extends Component {
     }
 
     setOtherLocationDisable(){
+        this.setState({disabled: true});
         if(document.getElementById("adr1").disabled === false){
             document.getElementById("adr1").disabled = true;
         }
@@ -176,7 +190,7 @@ class CitizenReport extends Component {
     }
 
     setOtherLocationEnable(){
-
+        this.setState({disabled: false});
         if(document.getElementById("adr1").disabled === true){
             document.getElementById("adr1").disabled = false;
         }
@@ -271,8 +285,25 @@ class CitizenReport extends Component {
         } else this.setState({facilityEmpty: false});
 
         if(error === false){
-            const citizenId = this.props.match.params.id;
-            if(this.state.newAddress.length != 0){
+            const citizenId = props.match.params.id;
+            if(this.state.disabled){
+                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
+                    "address": this.state.user.address,
+                    "address_l2": this.state.user.address_l2,
+                    "zipCode": this.state.user.zipCode.toString(),
+                    "city": this.state.user.city,
+                    "state": this.state.user.state,
+                    "facility": this.state.facility,
+                    "details": this.state.details,
+                    "citizen_id": parseInt(this.state.user.id),
+                }).then(function (response) {
+                    console.log(response);
+                    props.history.push('/citizen-home/' + citizenId);
+                }).catch(function (error) {
+                    console.log(error);
+                });
+            } else {
+                console.log('haayy')
                 axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
                     "address": this.state.newAddress,
                     "address_l2": this.state.newAddress_l2,
@@ -281,23 +312,10 @@ class CitizenReport extends Component {
                     "state": this.state.newState,
                     "facility": this.state.facility,
                     "details": this.state.details,
-                    "citizen_id": parseInt(citizenId),
+                    "citizen_id": parseInt(this.state.user.id),
                 }).then(function (response) {
                     console.log(response);
-                });
-            } else {
-                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
-                    "address": props.address,
-                    "address_l2": props.address,
-                    "zipCode": props.address_l2,
-                    "city": props.city,
-                    "state": props.state,
-                    "facility": this.state.facility,
-                    "details": this.state.details,
-                    "citizen_id": parseInt(citizenId),
-                }).then(function (response) {
-                    console.log(response);
-                    props.history.push('/citizen-home');
+                    props.history.push('/citizen-home/' + citizenId);
                 }).catch(function (error) {
                     console.log(error);
                 });

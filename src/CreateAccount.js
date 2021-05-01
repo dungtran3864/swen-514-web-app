@@ -7,6 +7,7 @@ import Styles from "./Styles";
 import React from 'react';
 import Colors from "./Colors";
 import {Component} from "react";
+import {postSignUp} from "./API";
 
 const axios = require('axios')
 
@@ -180,7 +181,7 @@ class CreateAccount extends Component {
         if (error === false) {
             const citizenId = props.match.params.id;
 
-            axios.post("https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/sign-up",
+            axios.post(postSignUp,
                 {
                     "email": this.state.email,
                     "password": this.state.password,

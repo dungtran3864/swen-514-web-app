@@ -5,6 +5,7 @@ import styled from "styled-components";
 import Styles from "./Styles";
 import React, {Component} from 'react';
 import Colors from "./Colors";
+import {getCitizenReports} from "./API.js";
 
 
 const StyledReports = styled(CenteredColumn)`
@@ -116,7 +117,7 @@ class ViewReports extends Component {
     displayReportsRENAME(that){
         {/*TODO: edit the created div to be filled with the correct information*/}
         const citizenId = this.props.match.params.id;
-        axios.get("https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/reports?citizen_id=" + parseInt(citizenId))
+        axios.get(getCitizenReports + parseInt(citizenId))
             .then(function (response) {
                 {/*todo: implement if statement (if reportType is by ID or by ZipCode)*/}
                 console.log(response);

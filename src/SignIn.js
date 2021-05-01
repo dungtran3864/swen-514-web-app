@@ -6,6 +6,7 @@ import { CenteredColumn } from "./StyleBlocks";
 import styled from "styled-components";
 import React, {Component} from 'react';
 import Colors from "./Colors";
+import {postLogIn} from "./API";
 
 const StyledSignIn = styled(CenteredColumn)`
   ${Styles.pageSetup};
@@ -102,7 +103,7 @@ class SignIn extends Component{
         that.setState({invalidEmail: false})
         that.setState({invalidPassword: false})
 
-        axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/login', {
+        axios.post(postLogIn, {
             "email": this.state.email,
             "password": this.state.password
         }).then(function (response){

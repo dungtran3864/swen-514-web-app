@@ -7,6 +7,7 @@ import React from 'react';
 import Colors from "./Colors";
 import {CenteredColumn} from "./StyleBlocks";
 import axios from "axios";
+import {getCitizen, postCitizen} from "./API";
 
 const StyledReport = styled(CenteredColumn)`
   padding: 0 64px;
@@ -99,6 +100,9 @@ class CitizenReport extends Component {
         return (
             <StyledReport>
                 <div className="CitizenReport" id ={"CitizenReport"}>
+                    <head>
+                        <title>Submit Report</title>
+                    </head>
                     <header className="citizen-report-header" id={"title"}>
                         <h1>Report Issue</h1>
                     </header>
@@ -147,7 +151,7 @@ class CitizenReport extends Component {
 
     componentDidMount() {
         const citizenId = this.props.match.params.id;
-        axios.get('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/user?citizen_id=' + parseInt(citizenId))
+        axios.get(getCitizen + parseInt(citizenId))
             .then(response => {
                 this.setState({user: response.data.user});
             }).catch(error => console.log(error))
@@ -250,7 +254,7 @@ class CitizenReport extends Component {
         if(error === false){
             const citizenId = props.match.params.id;
             if(this.state.disabled){
-                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
+                axios.post(postCitizen, {
                     "address": this.state.user.address,
                     "address_l2": this.state.user.address_l2,
                     "zipCode": this.state.user.zipCode.toString(),
@@ -266,7 +270,7 @@ class CitizenReport extends Component {
                     console.log(error);
                 });
             } else {
-                axios.post('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/report', {
+                axios.post(postCitizen, {
                     "address": this.state.newAddress,
                     "address_l2": this.state.newAddress_l2,
                     "zipCode": this.state.newZipCode.toString(),

@@ -1,7 +1,7 @@
 // ALL OF THE API URLs USED IN THIS PROJECT:
 
 // Base API URL (TO BE REPLACED BY THE GENERATED INVOKE URL FROM API GATEWAY SET UP BY THE GRADERS)
-export const baseURL = "https://itpuavz5l8.execute-api.us-east-1.amazonaws.com";
+export const baseURL = "https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev";
 
 // GET citizen
 export const getCitizen = baseURL + "/citizen/user?citizen_id=";

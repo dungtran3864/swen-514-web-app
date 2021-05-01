@@ -37,8 +37,7 @@ const StyledReports = styled(CenteredColumn)`
 const axios = require('axios').default;
 
 class CitizenViewReports extends Component {
-    reports; /* todo: remove this */
-
+    reports;
     constructor(props) {
         super(props);
         console.log(this.props)
@@ -46,7 +45,6 @@ class CitizenViewReports extends Component {
 
     render(){
         const citizenId = this.props.match.params.id;
-        {/* TODO: REPORTS SHOULD ONLY DISPLAY REPORTS IN THE DATABASE WITH THE CORRESPONDING USER'S ZIPCODE */}
         return (
             <StyledReports>
                 <div className="Report-page">
@@ -68,9 +66,7 @@ class CitizenViewReports extends Component {
     }
 
     displayReport(id, facility, details, resolved) {
-        {/*TODO: Header should read: "CitizenViewReports in <user's zipcode>"*/}
-
-        {/*Step 1: Create a Div node (for every report in the user's zipcode)*/}
+       {/*Step 1: Create a Div node (for every report in the user's zipcode)*/}
         const divNode = document.createElement("DIV");
         divNode.className = "Report-Component";
 
@@ -97,8 +93,6 @@ class CitizenViewReports extends Component {
         const reportNotResolved = document.createElement("LABEL");
         reportNotResolved.innerHTML = "Report is not Resolved";
         reportNotResolved.className = "Report-info";
-        {/*todo: modify to display is/is not resolved*/}
-
         {/*Step 3: Append the Text node to the Div node*/}
         divNode.appendChild(reportID);
         divNode.appendChild(reportFacility);
@@ -114,11 +108,9 @@ class CitizenViewReports extends Component {
     }
 
     displayReportsRENAME(that){
-        {/*TODO: edit the created div to be filled with the correct information*/}
         const citizenId = this.props.match.params.id;
         axios.get(getCitizenReports + parseInt(citizenId))
             .then(function (response) {
-                {/*todo: implement if statement (if reportType is by ID or by ZipCode)*/}
                 console.log(response);
 
                 console.log(response.data.reports); //array of reports

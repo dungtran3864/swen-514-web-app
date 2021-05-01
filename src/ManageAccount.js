@@ -89,7 +89,6 @@ class ManageAccount extends Component{
                     <Input type="text" id="state" name="state" defaultValue={this.state.state} onChange={evt => this.updateState(evt)}/><br/><br/>
 
                     <button className="validate-button" onClick={() => this.makeChanges()}>Apply Changes</button><br/>
-                    {/* todo: add a change to all default attributes to display valid states as defaults and clear input? */}
                     <Button id="doneButton" to={"/citizen-home"} label={"Done"}/><br/>
                 </body>
 

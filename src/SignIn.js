@@ -67,8 +67,7 @@ class SignIn extends Component{
                     <div id="login">
                         {this.state.invalidEmail && <label className="error-msg">Email not found.</label>}
                         <InputLabel htmlFor="email">Email:</InputLabel>
-                        <Input type="text" id="email" name="email" className="Form-Component" onChange={evt => this.updateEmail(evt)} /> {/* todo : update the states on input */}
-
+                        <Input type="text" id="email" name="email" className="Form-Component" onChange={evt => this.updateEmail(evt)} />
                         {this.state.invalidPassword && <label className="error-msg">Password is incorrect.</label>}
                         <InputLabel htmlFor="password">Password:</InputLabel>
                         <Input type="password" id="password" name="password" className="Form-Component" onChange={evt => this.updatePassword(evt)}/><br/>
@@ -123,7 +122,6 @@ class SignIn extends Component{
                     props.history.push('/gov-home/' + response.data.user_id);
                 }
                 //everything is awesome
-                //todo: testing the method: true should be changed to false OR removed
             }
         }).catch(function(error){
             console.log(error);

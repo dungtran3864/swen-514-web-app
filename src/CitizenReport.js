@@ -91,16 +91,8 @@ class CitizenReport extends Component {
             details: "",
             citizen_id:"",
             disabled: true,
-            user: {},
+            user: {}
         }
-    }
-
-    componentDidMount() {
-        const citizenId = this.props.match.params.id;
-        axios.get('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/user?citizen_id=' + parseInt(citizenId))
-            .then(response => {
-                this.setState({user: response.data.user});
-            }).catch(error => console.log(error))
     }
 
     render() {
@@ -112,7 +104,7 @@ class CitizenReport extends Component {
                     </header>
                     <body id = "form">
                     <div id={"btns"}>
-                        <button onClick={() => this.setOtherLocationDisable()} id={"btn"}>Use My Address</button><br/>
+                        <button onClick={() => this.setOtherLocationDisable() & this.componentDidMount()} id={"btn"}>Use My Address</button><br/>
                         <button className="other-location-button" onClick={() => this.setOtherLocationEnable()} id={"btn"}>Use Other Address</button><br/>
                     </div>
                     <div id={"other"}>
@@ -151,6 +143,14 @@ class CitizenReport extends Component {
                 </div>
             </StyledReport>
         );
+    }
+
+    componentDidMount() {
+        const citizenId = this.props.match.params.id;
+        axios.get('https://itpuavz5l8.execute-api.us-east-1.amazonaws.com/dev/citizen/user?citizen_id=' + parseInt(citizenId))
+            .then(response => {
+                this.setState({user: response.data.user});
+            }).catch(error => console.log(error))
     }
 
     setOtherLocationDisable(){

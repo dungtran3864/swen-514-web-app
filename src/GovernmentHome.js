@@ -22,8 +22,8 @@ class GovernmentHome extends Component {
                 </header>
                 <body>
                     <form>
-                        <Button to={"/gov-submit-report/" + citizenId}  label="View Reports"/><br/><br/>
-                        <Button to={"/reports/" + citizenId} label="Reports"/><br/><br/>
+                        <Button to={"/gov-submit-report/" + citizenId}  label="Submit Report"/><br/><br/>
+                        <Button to={"/reports/" + citizenId} label="My Reports"/><br/><br/>
                         <Button to="/" label="Sign Out"/><br/><br/>
                     </form>
                 </body>

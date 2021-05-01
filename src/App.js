@@ -3,7 +3,7 @@ import SignIn from "./SignIn";
 import Landing from "./Landing";
 import CreateAccount from "./CreateAccount";
 import CitizenHome from "./CitizenHome";
-import Reports from "./Reports";
+import ViewReports from "./ViewReports";
 import React from 'react';
 import {
     BrowserRouter as Router,
@@ -25,7 +25,7 @@ const App = () => {
                     <Route path="/gov-home" component={GovernmentHome}/>
                     <Route path="/sign-in" component={SignIn} />
                     <Route path="/create-account" component={CreateAccount}/>
-                    <Route path="/reports/:id" component={Reports }/>
+                    <Route path="/reports/:id" component={ViewReports }/>
                     <Route path="/manage-account" component={ManageAccount} />
                     <Route path="/" component={Landing}/>
             </Switch>

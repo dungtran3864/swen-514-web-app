@@ -22,7 +22,7 @@ class CitizenHome extends Component{
                 <body>
                 <form>
                     <Button to={"/citizen-submit-report/" + citizenId}  label="Submit Issue Form"/><br/><br/>
-                    <Button to={"/reports/" + citizenId} label="My Reports"/><br/><br/>
+                    <Button to={"/citizen-reports/" + citizenId} label="My Reports"/><br/><br/>
                     <Button to="/" label="Sign Out"/><br/><br/>
                 </form>
                 </body>

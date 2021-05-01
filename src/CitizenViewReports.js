@@ -36,7 +36,7 @@ const StyledReports = styled(CenteredColumn)`
 
 const axios = require('axios').default;
 
-class ViewReports extends Component {
+class CitizenViewReports extends Component {
     reports; /* todo: remove this */
 
     constructor(props) {
@@ -59,7 +59,6 @@ class ViewReports extends Component {
                     <body>
                         <div className="Reports-display" id="reportsDiv">
                             {this.displayReportsRENAME(this)}
-
                             <Button to={"/citizen-home/" + citizenId} label={"Back"}/>
                         </div>
                     </body>
@@ -69,7 +68,7 @@ class ViewReports extends Component {
     }
 
     displayReport(id, facility, details, resolved) {
-        {/*TODO: Header should read: "ViewReports in <user's zipcode>"*/}
+        {/*TODO: Header should read: "CitizenViewReports in <user's zipcode>"*/}
 
         {/*Step 1: Create a Div node (for every report in the user's zipcode)*/}
         const divNode = document.createElement("DIV");
@@ -104,7 +103,7 @@ class ViewReports extends Component {
         divNode.appendChild(reportID);
         divNode.appendChild(reportFacility);
         divNode.appendChild(reportDetails);
-        if(resolved){
+        if(resolved === 1){
             divNode.appendChild(reportResolved);
         }else{
             divNode.appendChild(reportNotResolved);
@@ -132,4 +131,4 @@ class ViewReports extends Component {
 
 }
 
-export default ViewReports;
+export default CitizenViewReports;

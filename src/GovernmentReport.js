@@ -149,7 +149,7 @@ class GovernmentReport extends Component {
 
                     </div>
 
-                    <Button id={"submit"} label="Submit" to="/government-home"/>
+                    <Button id={"submit"} label="Submit" to="/gov-home"/>
                     </body>
                 </div>
             </StyledReport>

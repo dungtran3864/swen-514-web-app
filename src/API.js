@@ -20,4 +20,6 @@ export const getCitizenReports = baseURL + "/citizen/reports?citizen_id=";
 
 export const updateReport = baseURL + "/government/report";
 
+export const getGovernmentReports = baseURL + "/government/reports";
+
 export default baseURL;

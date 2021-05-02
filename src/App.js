@@ -25,7 +25,7 @@ const App = () => {
                     <Route path="/citizen-reports/:id" component={CitizenViewReports }/>
                     <Route path="/gov-submit-report" component={GovernmentReport}/>
                     <Route path="/gov-home" component={GovernmentHome}/>
-                    <Route path="/gov-reports/:id" component={GovernmentViewReports }/>
+                    <Route path="/gov-reports" component={GovernmentViewReports }/>
                     <Route path="/sign-in" component={SignIn} />
                     <Route path="/create-account" component={CreateAccount}/>
                     <Route path="/manage-account" component={ManageAccount} />

@@ -5,7 +5,9 @@ import styled from "styled-components";
 import Styles from "./Styles";
 import React, {Component} from 'react';
 import Colors from "./Colors";
-import {getCitizenReports} from "./API.js";
+import {getGovernmentReports, updateReport} from "./API.js";
+import Typography from "@material-ui/core/Typography";
+import MatButton from '@material-ui/core/Button';
 
 
 const StyledReports = styled(CenteredColumn)`
@@ -27,7 +29,6 @@ const StyledReports = styled(CenteredColumn)`
   }
   p{
     align-content: center;
-    color: red;
   }
   body{
     align-content: center;
@@ -37,15 +38,22 @@ const StyledReports = styled(CenteredColumn)`
 const axios = require('axios').default;
 
 class ViewReports extends Component {
-    reports;
-
     constructor(props) {
         super(props);
-        console.log(this.props)
+        this.state = {
+            reports: []
+        }
+    }
+
+    componentDidMount() {
+        axios.get(getGovernmentReports).then(response => {
+            this.setState({reports: response.data.reports});
+        }).catch(error => {
+            console.log(error);
+        })
     }
 
     render(){
-        const citizenId = this.props.match.params.id;
         return (
             <StyledReports>
                 <div className="Report-page">
@@ -57,8 +65,20 @@ class ViewReports extends Component {
                     </header>
                     <body>
                     <div className="Reports-display" id="reportsDiv">
-                        {this.displayReportsRENAME(this)}
-                        <Button to={"/gov-home/" + citizenId} label={"Back"}/>
+                        {this.state.reports.map(report => (
+                            <div style={{backgroundColor: 'lightgray', marginTop: 15, borderWidth: 20, borderColor: 'blue'}}>
+                                <Typography>Facility: {report.facility}</Typography>
+                                <Typography>Details: {report.details}</Typography>
+                                <Typography>Address: {report.address}</Typography>
+                                <Typography>Address L2:{report.address_l2}</Typography>
+                                <Typography>Zip code:{report.zipCode}</Typography>
+                                <Typography>City: {report.city}</Typography>
+                                <Typography>State: {report.state}</Typography>
+                                <Typography>Status: {report.status ? "Issue Resolved" : "Issue Not Resolved"}</Typography>
+                                <MatButton variant="contained" onClick={() => this.markAsResolved(report.id)}>Mark as Resolved</MatButton>
+                            </div>
+                        ))}
+                        <Button to={"/gov-home"} label={"Back"}/>
                     </div>
                     </body>
                 </div>
@@ -66,62 +86,15 @@ class ViewReports extends Component {
         );
     }
 
-    displayReport(id, facility, details, resolved) {
-
-        /*Step 1: Create a Div node (for every report in the user's zipcode)*/
-        const divNode = document.createElement("DIV");
-        divNode.className = "Report-Component";
-
-        /*Step 2: Create Text nodes*/
-        // REPORT ID
-        const reportID = document.createElement("LABEL");
-        reportID.innerHTML = "Report ID: " + id;
-        reportID.className = "Report-info";
-
-        //REPORT FACILITY
-        const reportFacility = document.createElement("LABEL");
-        reportFacility.innerHTML = "Facility: " + facility;
-        reportFacility.className = "Report-info";
-
-        //REPORT DETAILS
-        const reportDetails = document.createElement("LABEL");
-        reportDetails.innerHTML = "Details: " + details;
-        reportDetails.className = "Report-info";
-
-        //REPORT RESOLVED
-        const reportResolved = document.createElement("LABEL");
-        reportResolved.innerHTML = "Report is Resolved";
-        reportResolved.className = "Report-info";
-        const reportNotResolved = document.createElement("LABEL");
-        reportNotResolved.innerHTML = "Report is not Resolved";
-        reportNotResolved.className = "Report-info";
-
-        /*Step 3: Append the Text node to the Div node*/
-        divNode.appendChild(reportID);
-        divNode.appendChild(reportFacility);
-        divNode.appendChild(reportDetails);
-        if(resolved === 1){
-            divNode.appendChild(reportResolved);
-        }else{
-            divNode.appendChild(reportNotResolved);
-        }
-
-        /*Step 4: Append the Text node to the Div*/
-        document.getElementById("reportsDiv").appendChild(divNode);
-    }
-
-    displayReportsRENAME(that){
-        const citizenId = this.props.match.params.id;
-        axios.get(getCitizenReports + parseInt(citizenId))
-            .then(function (response) {
-                console.log(response);
-
-                console.log(response.data.reports); //array of reports
-                response.data.reports.forEach(report => {that.displayReport(report.id, report.facility, report.details, report.status)});
-
-            }).catch(function(error){
+    markAsResolved = (reportId) => {
+        axios.patch(updateReport, {
+            status: 1,
+            report_id: reportId
+        }).then(response => {
+            alert(response.data.message);
+        }).catch(error => {
             console.log(error);
-        });
+        })
     }
 
 }
